@@ -21,10 +21,13 @@
         <a class='active' href='#'>Home</a>
       </li>
       <li>
-        <a href='#'>Endangered Animals</a>
+        <a href='#'>Animals</a>
       </li>
       <li>
         <a href='#'>Quiz</a>
+      </li>
+      <li>
+        <a href='#'>Gallery</a>
       </li>
       <li>
         <a href='#'>Signup</a>
@@ -161,7 +164,7 @@ nav ul li a:hover {
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(-2em);
+    transform: translateY(-3em);
   }
   to {
     opacity: 1;

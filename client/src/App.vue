@@ -6,13 +6,14 @@
 </div>
 <header>
   <div>
+    <section class = "top">
     <h1>
       JAMILYN
     </h1>
     <p>
       Committed to saving endangered species
     </p>
-    
+    </section>
   </div>
   <nav role='navigation'>
     <ul>
@@ -51,6 +52,7 @@ export default {
     return{
       quote: '',
       trivia: [],
+      
     }
   },
   components: {
@@ -63,6 +65,7 @@ export default {
   fetch('https://opentdb.com/api.php?amount=10&category=27&difficulty=easy&type=boolean')
   .then(res => res.json())
   .then(trivia => this.trivia = trivia)
+  
   }
   
 }
@@ -87,6 +90,7 @@ a {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
+  
 }
 
 
@@ -95,6 +99,7 @@ header {
   top: 0;
   width: 100%;
   padding: 0px 20px;
+  
 }
 header > div {
   max-width: 600px;
@@ -110,6 +115,7 @@ header p {
   margin-bottom: 0.7em;
   font-family: 'Montserrat', sans-serif;
 }
+
 h1 {
   font-weight: 600;
   font-size: 3.4em;
@@ -124,6 +130,7 @@ nav {
 nav ul li {
   display: inline-block;
   margin-right: 35px;
+  
 }
 nav ul li a {
   font-weight: 800;
@@ -132,6 +139,8 @@ nav ul li a {
   letter-spacing: 0.2em;
   color: rgba(255, 255, 255, 0.308);
   display: block;
+  
+  
 }
 nav ul li a.active {
   box-shadow: 0px -1px 0px #fff;
@@ -145,7 +154,20 @@ nav ul li a:hover {
   text-align: center;
 }
 
+.top {
+  animation: fadeIn 3s forwards;
+}
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-2em);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 </style>
 

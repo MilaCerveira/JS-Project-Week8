@@ -11,7 +11,7 @@
       JAMILYN
     </h1>
     <p>
-      Committed to saving endangered species
+      Committed to wildlife conservation
     </p>
     </section>
   </div>

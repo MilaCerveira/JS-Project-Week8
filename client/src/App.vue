@@ -38,8 +38,8 @@
 
 <div class='bodies-container'>
   <item-dropdown :bodies="bodies"> </item-dropdown>
-       
-      </div>
+  <item-detail :items="item"></item-detail>
+</div>
       
   
 
@@ -47,36 +47,30 @@
 </template>
 
 <script>
-
-import ItemDropdown from '@/components/ItemDropdown.vue';
+import ItemDropdown from "@/components/ItemDropdown.vue";
+import ItemDetail from "@/components/ItemDetail.vue";
 
 export default {
-  name: 'App',
-  data(){
-    return{
-      bodies:[],
-      
-      
-    }
+  name: "App",
+  data() {
+    return {
+      bodies: [],
+    };
   },
   components: {
-    // "item-detail": ItemDetail,
-    'item-dropdown': ItemDropdown
-    
+    "item-detail": ItemDetail,
+    "item-dropdown": ItemDropdown,
   },
- mounted(){
-  fetch('http://api.le-systeme-solaire.net/rest/bodies/')
-  .then(res => res.json())
-  .then(bodies => this.bodies = bodies.bodies)
-  
-  
-  }
-  
-}
+  mounted() {
+    fetch("http://api.le-systeme-solaire.net/rest/bodies/")
+      .then((res) => res.json())
+      .then((bodies) => (this.bodies = bodies.bodies));
+  },
+};
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,100&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,100&display=swap");
 body {
   font-size: 14px;
   font-family: Sans-Serif;
@@ -88,19 +82,17 @@ a {
   text-decoration: none;
 }
 .Img > div {
- width: 100%;
+  width: 100%;
   height: 440px;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
-  
 }
 header {
   position: absolute;
   top: 0;
   width: 100%;
   padding: 0px 20px;
-  
 }
 header > div {
   max-width: 600px;
@@ -113,7 +105,7 @@ header > div {
 header p {
   font-size: 2em;
   margin-bottom: 0.7em;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 h1 {
   font-weight: 600;
@@ -129,7 +121,6 @@ nav {
 nav ul li {
   display: inline-block;
   margin-right: 35px;
-  
 }
 nav ul li a {
   font-weight: 800;
@@ -138,8 +129,6 @@ nav ul li a {
   letter-spacing: 0.2em;
   color: rgba(255, 255, 255, 0.308);
   display: block;
-  
-  
 }
 nav ul li a.active {
   box-shadow: 0px -1px 0px #fff;

@@ -1,9 +1,25 @@
 <template>
-
+  <div v-if="item">
+    <div>
+      <h2>name:{{ item.englishName }}</h2>
+      <p v-if="item.moons">moons: {{ item.moons }}</p>
+    </div>
+  </div>
 </template>
-
 <script>
-</script>
+import { eventBus } from "../main.js";
 
- <style>
-</style>
+export default {
+  name: "item-detail",
+  data() {
+    return {
+      item: null,
+    };
+  },
+  mounted() {
+    eventBus.$on("selected-item", (item) => {
+      this.item = item;
+    });
+  },
+};
+</script>

@@ -1,11 +1,10 @@
 <template lang="html">
   <div>
-
+<p> This is where the list will display </p>
+<list-item/>
   </div>
 </template>
     
-</template>
-
 <script> 
 
 import ListItem from '@/components/ListItem.vue'

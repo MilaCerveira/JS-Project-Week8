@@ -37,11 +37,11 @@
 </header>
 
 <div class='bodies-container'>
-  
+  <bodies-list> </bodies-list>
        <!-- <h3>{{quote.name}}</h3>
        <h4>{{quote.character}}</h4> -->
       </div>
-      <p> this is a test paragraph</p>
+      
   
 
   </div>

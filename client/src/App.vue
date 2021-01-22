@@ -37,7 +37,7 @@
 </header>
 
 <div class='quote-container'>
-       <h3>{{quote.quote}}</h3>
+       <h3>{{quote.name}}</h3>
        <h4>{{quote.character}}</h4>
       </div>
       <p> this is a test paragraph</p>
@@ -47,14 +47,12 @@
 </template>
 
 <script>
-
-
 export default {
   name: 'App',
   data(){
     return{
-      quote: '',
-      trivia: [],
+      quote: [],
+      
       
     }
   },
@@ -62,12 +60,10 @@ export default {
     
   },
  mounted(){
-  fetch('https://got-quotes.herokuapp.com/quotes')
+  fetch('http://api.le-systeme-solaire.net/rest/bodies')
   .then(res => res.json())
-  .then(quote => this.quote = quote),
-  fetch('https://opentdb.com/api.php?amount=10&category=27&difficulty=easy&type=boolean')
-  .then(res => res.json())
-  .then(trivia => this.trivia = trivia)
+  .then(quote => this.quote = quote)
+  
   
   }
   
@@ -86,7 +82,6 @@ body {
 a {
   text-decoration: none;
 }
-
 .Img > div {
  width: 100%;
   height: 440px;
@@ -95,8 +90,6 @@ a {
   background-position: center center;
   
 }
-
-
 header {
   position: absolute;
   top: 0;
@@ -112,13 +105,11 @@ header > div {
   text-align: center;
   color: White;
 }
-
 header p {
   font-size: 2em;
   margin-bottom: 0.7em;
   font-family: 'Montserrat', sans-serif;
 }
-
 h1 {
   font-weight: 600;
   font-size: 3.4em;
@@ -152,15 +143,12 @@ nav ul li a.active,
 nav ul li a:hover {
   color: #fff;
 }
-
 .quote-container {
   text-align: center;
 }
-
 .top {
   animation: fadeIn 3s forwards;
 }
-
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -171,6 +159,4 @@ nav ul li a:hover {
     transform: translateY(0);
   }
 }
-
 </style>
-

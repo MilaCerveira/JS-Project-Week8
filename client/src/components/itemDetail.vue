@@ -3,6 +3,7 @@
     <div>
       <h2>name:{{ item.englishName }}</h2>
       <p v-if="item.moons">moons: {{ item.moons }}</p>
+      <p v-if="!item.moons">aroundPlanet: {{ item.aroundPlanet.planet }}</p>
     </div>
   </div>
 </template>

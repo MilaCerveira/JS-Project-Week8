@@ -65,6 +65,13 @@ export default {
     fetch("http://api.le-systeme-solaire.net/rest/bodies/")
       .then((res) => res.json())
       .then((bodies) => (this.bodies = bodies.bodies));
+
+    this.sortAlphabetically();
+  },
+  methods: {
+    sortAlphabetically() {
+      this.bodies.sort((a, b) => (a.englishName > b.englishName ? 1 : -1));
+    },
   },
 };
 </script>

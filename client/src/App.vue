@@ -1,17 +1,17 @@
 <template lang=html>
   <div id="app">
       <div class='Img'>
-  <div style="background-image: url('https://cdn.mos.cms.futurecdn.net/hrBSCFbPcR5iTFxHFoJKXN.jpg')"></div>
+  <div style="background-image: url('https://c4.wallpaperflare.com/wallpaper/166/977/136/cool-space-planet-floating-dark-light-wallpaper-preview.jpg')"></div>
   
 </div>
 <header>
   <div>
     <section class = "top">
     <h1>
-      JAMILYN
+      Space
     </h1>
     <p>
-      Committed to wildlife conservation
+      The final frontier
     </p>
     </section>
   </div>
@@ -21,7 +21,7 @@
         <a class='active' href='#'>Home</a>
       </li>
       <li>
-        <a href='#'>Animals</a>
+        <a href='#'>Planets</a>
       </li>
       <li>
         <a href='#'>Quiz</a>
@@ -47,6 +47,9 @@
 </template>
 
 <script>
+import bodiesList from './components/bodiesList.vue'
+import itemDetail from './components/itemDetail.vue'
+import listItem from './components/listItem.vue'
 export default {
   name: 'App',
   data(){
@@ -57,6 +60,9 @@ export default {
     }
   },
   components: {
+    "bodies-list": bodiesList,
+    "item-detail": itemDetail,
+    'listItem': listItem
     
   },
  mounted(){

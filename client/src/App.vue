@@ -37,10 +37,10 @@
 </header>
 
 <div class='bodies-container'>
-  <bodies-list :bodies="bodies"> </bodies-list>
+  <item-dropdown :bodies="bodies"> </item-dropdown>
        <!-- <h3>{{quote.name}}</h3>
        <h4>{{quote.character}}</h4> -->
-       <list-item/>
+       <!-- <list-item/> -->
       </div>
       
   
@@ -49,9 +49,11 @@
 </template>
 
 <script>
-import BodiesList from '@/components/BodiesList.vue'
-import ItemDetail from '@/components/ItemDetail.vue'
-import ListItem from '@/components/ListItem.vue'
+import BodiesList from '@/components/BodiesList.vue';
+// import ItemDetail from '@/components/ItemDetail.vue';
+// import ListItem from '@/components/ListItem.vue';
+import ItemDropdown from '@/components/ItemDropdown.vue';
+
 export default {
   name: 'App',
   data(){
@@ -63,8 +65,9 @@ export default {
   },
   components: {
     "bodies-list": BodiesList,
-    "item-detail": ItemDetail,
-    'list-item': ListItem
+    // "item-detail": ItemDetail,
+    // 'list-item': ListItem,
+    'item-dropdown': ItemDropdown
     
   },
  mounted(){

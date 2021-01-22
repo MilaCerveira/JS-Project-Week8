@@ -37,9 +37,10 @@
 </header>
 
 <div class='bodies-container'>
-  <bodies-list> </bodies-list>
+  <bodies-list :bodies="bodies"> </bodies-list>
        <!-- <h3>{{quote.name}}</h3>
        <h4>{{quote.character}}</h4> -->
+       <list-item/>
       </div>
       
   
@@ -48,9 +49,9 @@
 </template>
 
 <script>
-import BodiesList from './components/BodiesList.vue'
-import ItemDetail from './components/ItemDetail.vue'
-import ListItem from './components/ListItem.vue'
+import BodiesList from '@/components/BodiesList.vue'
+import ItemDetail from '@/components/ItemDetail.vue'
+import ListItem from '@/components/ListItem.vue'
 export default {
   name: 'App',
   data(){
@@ -67,9 +68,9 @@ export default {
     
   },
  mounted(){
-  fetch('http://api.le-systeme-solaire.net/rest/bodies')
+  fetch('http://api.le-systeme-solaire.net/rest/bodies/')
   .then(res => res.json())
-  .then(bodies => this.bodies =bodies)
+  .then(bodies => this.bodies = bodies.bodies)
   
   
   }

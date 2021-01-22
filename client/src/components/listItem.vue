@@ -1,6 +1,6 @@
 <template lang="html">
 <div> 
-  <p>this is where each individual item will appear</p>
+  <p>{{ item.englishName }} </p>
 </div>
 </template>
 

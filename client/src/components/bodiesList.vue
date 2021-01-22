@@ -1,7 +1,10 @@
 <template lang="html">
   <div>
 <p> This is where the list will display </p>
-<list-item/>
+<list-item
+v-for="(item, index) in bodies"
+:item="item"
+:index="index"> </list-item>
   </div>
 </template>
     

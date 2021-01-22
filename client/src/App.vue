@@ -36,9 +36,10 @@
   </nav>
 </header>
 
-<div class='quote-container'>
-       <h3>{{quote.name}}</h3>
-       <h4>{{quote.character}}</h4>
+<div class='bodies-container'>
+  
+       <!-- <h3>{{quote.name}}</h3>
+       <h4>{{quote.character}}</h4> -->
       </div>
       <p> this is a test paragraph</p>
   
@@ -47,28 +48,28 @@
 </template>
 
 <script>
-import bodiesList from './components/bodiesList.vue'
-import itemDetail from './components/itemDetail.vue'
-import listItem from './components/listItem.vue'
+import BodiesList from './components/BodiesList.vue'
+import ItemDetail from './components/ItemDetail.vue'
+import ListItem from './components/ListItem.vue'
 export default {
   name: 'App',
   data(){
     return{
-      quote: [],
+      bodies:[],
       
       
     }
   },
   components: {
-    "bodies-list": bodiesList,
-    "item-detail": itemDetail,
-    'listItem': listItem
+    "bodies-list": BodiesList,
+    "item-detail": ItemDetail,
+    'list-item': ListItem
     
   },
  mounted(){
   fetch('http://api.le-systeme-solaire.net/rest/bodies')
   .then(res => res.json())
-  .then(quote => this.quote = quote)
+  .then(bodies => this.bodies =bodies)
   
   
   }

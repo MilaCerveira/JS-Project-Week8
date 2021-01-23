@@ -21,7 +21,11 @@
         <a class='active' href='#'>Home</a>
       </li>
       <li>
-        <a href='#'>Planets</a>
+        <a href='#' 
+        v-if="!item.isPlanet"
+        v-for="item in sortedAlphabetically"
+        :value="item"
+        >Planets</a>
       </li>
       <li>
         <a href='#'>Quiz</a>
@@ -148,7 +152,7 @@ nav ul li a:hover {
   text-align: center;
 }
 .top {
-  animation: fadeIn 3s forwards;
+  animation: fadeIn 4s forwards;
 }
 @keyframes fadeIn {
   from {

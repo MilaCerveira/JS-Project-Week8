@@ -36,6 +36,8 @@
   </nav>
 </header>
 
+<carousel></carousel>
+
 <div class='bodies-container'>
   <item-dropdown :bodies="bodies"> </item-dropdown>
   <item-detail :items="item"></item-detail>
@@ -49,6 +51,7 @@
 <script>
 import ItemDropdown from "@/components/ItemDropdown.vue";
 import ItemDetail from "@/components/ItemDetail.vue";
+import Carousel from "@/components/Carousel.vue";
 
 export default {
   name: "App",
@@ -62,6 +65,7 @@ export default {
   components: {
     "item-detail": ItemDetail,
     "item-dropdown": ItemDropdown,
+    "carousel": Carousel,
   },
   mounted() {
     fetch("http://api.le-systeme-solaire.net/rest/bodies/")

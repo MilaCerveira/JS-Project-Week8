@@ -37,15 +37,16 @@
 </header>
 
 <carousel></carousel>
+
 <div class='bodies-container'>
   <item-dropdown :bodies="bodies"> </item-dropdown>
   <item-detail :items="item"></item-detail>
 </div>
 
+<quiz />
+
 <h2> NASA's image of the day </h2>
 <img id='randomImg' :src="imgUrl"></img>
-
-<p> this is a test</p> 
 
 </div>
 
@@ -54,9 +55,11 @@
 </template>
 
 <script>
+
 import ItemDropdown from "@/components/ItemDropdown.vue";
 import ItemDetail from "@/components/ItemDetail.vue";
 import Carousel from "@/components/Carousel.vue";
+import Quiz from "@/components/Quiz.vue";
 
 export default {
   name: "App",
@@ -71,6 +74,7 @@ export default {
     "item-detail": ItemDetail,
     "item-dropdown": ItemDropdown,
     "carousel": Carousel,
+    "quiz": Quiz,
   },
   mounted() {
     fetch("http://api.le-systeme-solaire.net/rest/bodies/")
@@ -195,7 +199,8 @@ nav ul li a:hover {
 }
 
 #randomImg {
-    height: 600px;
+    height: 800px;
+    width: 100%;
 }  
 
 </style>

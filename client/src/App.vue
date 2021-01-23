@@ -148,7 +148,7 @@ nav ul li a:hover {
   text-align: center;
 }
 .top {
-  animation: fadeIn 3s forwards;
+  animation: fadeIn 4s forwards;
 }
 @keyframes fadeIn {
   from {

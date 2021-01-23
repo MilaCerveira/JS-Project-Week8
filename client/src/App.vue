@@ -60,6 +60,7 @@
 import ItemDropdown from "@/components/ItemDropdown.vue";
 import ItemDetail from "@/components/ItemDetail.vue";
 import { eventBus } from "./main.js";
+import FavouriteService from "../services/FavouritesService.js";
 
 export default {
   name: "App",
@@ -105,6 +106,7 @@ export default {
     sortAlphabetically() {
       this.bodies.sort((a, b) => (a.englishName > b.englishName ? 1 : -1));
     },
+  }
   },
   computed: {
     randomImage() {

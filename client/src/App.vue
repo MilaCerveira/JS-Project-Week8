@@ -40,15 +40,26 @@
   <item-dropdown :bodies="bodies"> </item-dropdown>
   <item-detail :items="item"></item-detail>
 </div>
-      <h2> NASA's image of the day </h2>
-  <img id='randomImg' :src="imgUrl"></img>
+      <!-- <h2> NASA's image of the day </h2>
+  <img id='randomImg' :src="imgUrl"></img> -->
+  
+  <div class="favourite-list">
+    <h2>Favourite Celestial Bodies</h2>
+    <div class="fav-list-tem">
+      <li v-for="item in favouriteItems">
+        <p v-if="item.englishName">{{item.englishName}}</p>
+        <p v-if="!item.englishName">{{item.alternativeName}}</p>
 
+      </li>
+    </div>
+  </div>
   </div>
 </template>
 
 <script>
 import ItemDropdown from "@/components/ItemDropdown.vue";
 import ItemDetail from "@/components/ItemDetail.vue";
+import { eventBus } from "./main.js";
 
 export default {
   name: "App",
@@ -57,6 +68,7 @@ export default {
       bodies: [],
       imgUrls: [],
       imgUrl: "",
+      favouriteItems: [],
     };
   },
   components: {
@@ -82,6 +94,12 @@ export default {
       .then((res) => res.json())
 
       .then((data) => (this.imgUrl = data));
+
+    eventBus.$on("item-to-save", (item) => {
+      if (!this.favouriteItems.includes(item)) {
+        this.favouriteItems.push(item);
+      }
+    });
   },
   methods: {
     sortAlphabetically() {
@@ -185,5 +203,8 @@ nav ul li a:hover {
 }
 .randomImg {
   height: 600px;
+}
+li {
+  list-style: none;
 }
 </style>

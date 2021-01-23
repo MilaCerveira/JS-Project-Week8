@@ -1,7 +1,7 @@
 <template>
   <div>
     <select v-on:change="handleSelect" v-model="selectedItem">
-      <option>Select A Celestial Body...</option>
+      <option disabled value="">Select A Celestial Body...</option>
       <option
         v-if="item.englishName"
         v-for="item in sortedAlphabetically"
@@ -39,9 +39,15 @@ export default {
   computed: {
     sortedAlphabetically: function () {
       function compare(a, b) {
-        if (a.englishName < b.englishName) return -1;
-        if (a.englishName > b.englishName) return 1;
-        return 0;
+        if (a.englishName < b.englishName) 
+          return -1;
+        if (a.englishName > b.englishName) 
+          return 1;
+        if (a.alternativeName < b.alternativeName)
+          return -1;
+        if (a.alternativeName > b. alternativeName)
+          return 1;
+        return 0
       }
       return this.bodies.sort(compare);
     },

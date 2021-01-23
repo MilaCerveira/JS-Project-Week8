@@ -5,15 +5,13 @@
       <option
         v-if="item.englishName"
         v-for="item in sortedAlphabetically"
-        :value="item"
-      >
+        :value="item">
         {{ item.englishName }}
       </option>
       <option
         v-if="!item.englishName"
         v-for="item in sortedAlphabetically"
-        :value="item"
-      >
+        :value="item">
         {{ item.alternativeName }}
       </option>
     </select>
@@ -27,7 +25,7 @@ export default {
   name: "item-dropdown",
   data() {
     return {
-      selectedItem: {},
+      selectedItem: {}
     };
   },
   props: ["bodies"],
@@ -51,10 +49,6 @@ export default {
       }
       return this.bodies.sort(compare);
     },
-    //   alternativeName: function () {
-    //   let body
-    //   for (body in this.bodies; body.englishName == ""; body.englishName == body.alternativeName)
-    // }
   },
 };
 </script>

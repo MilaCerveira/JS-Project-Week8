@@ -1,9 +1,9 @@
 <template lang=html>
   <div id="app">
-      <div class='Img'>
-  <div style="background-image: url('https://c4.wallpaperflare.com/wallpaper/166/977/136/cool-space-planet-floating-dark-light-wallpaper-preview.jpg')"></div>
-  
-</div>
+    <div class='Img'>
+      <div style="background-image: url('https://c4.wallpaperflare.com/wallpaper/166/977/136/cool-space-planet-floating-dark-light-wallpaper-preview.jpg')">
+      </div>  
+    </div>
 <header>
   <div>
     <section class = "top">
@@ -21,11 +21,7 @@
         <a class='active' href='#'>Home</a>
       </li>
       <li>
-        <a href='#' 
-        v-if="!item.isPlanet"
-        v-for="item in sortedAlphabetically"
-        :value="item"
-        >Planets</a>
+        <a href='#'>Planets</a>
       </li>
       <li>
         <a href='#'>Quiz</a>
@@ -40,10 +36,11 @@
   </nav>
 </header>
 
-<div class='bodies-container'>
-  <item-dropdown :bodies="bodies"> </item-dropdown>
-  <item-detail :items="item"></item-detail>
-</div>
+    <div class='bodies-container'>
+      <item-dropdown :bodies="bodies"> </item-dropdown>
+      <item-detail :items="item"></item-detail>
+      <!-- <planet-list /> -->
+    </div>
       
   
 
@@ -53,6 +50,7 @@
 <script>
 import ItemDropdown from "@/components/ItemDropdown.vue";
 import ItemDetail from "@/components/ItemDetail.vue";
+// import PlanetList from "@/components/PlanetList.vue";
 
 export default {
   name: "App",
@@ -64,18 +62,13 @@ export default {
   components: {
     "item-detail": ItemDetail,
     "item-dropdown": ItemDropdown,
+    // "planet-list": PlanetList
   },
   mounted() {
     fetch("http://api.le-systeme-solaire.net/rest/bodies/")
       .then((res) => res.json())
       .then((bodies) => (this.bodies = bodies.bodies));
 
-    this.sortAlphabetically();
-  },
-  methods: {
-    sortAlphabetically() {
-      this.bodies.sort((a, b) => (a.englishName > b.englishName ? 1 : -1));
-    },
   },
 };
 </script>

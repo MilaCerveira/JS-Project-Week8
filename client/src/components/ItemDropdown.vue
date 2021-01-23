@@ -1,7 +1,7 @@
 <template>
   <div>
     <select v-on:change="handleSelect" v-model="selectedItem">
-      <option>Select A Celestial Body...</option>
+      <option disabled value = ''>Select A Celestial Body...</option>
       <option
         v-if="item.englishName"
         v-for="item in sortedAlphabetically"

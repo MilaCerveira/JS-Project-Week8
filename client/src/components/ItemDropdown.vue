@@ -2,7 +2,7 @@
   <div>
     <select v-on:change="handleSelect" v-model="selectedItem">
       <option>Select A Celestial Body...</option>
-      <option v-for="item in bodies" :value="item">
+      <option v-for="item in sortedAlphabetically" :value="item">
         {{ item.englishName }}
       </option>
     </select>
@@ -25,6 +25,22 @@ export default {
       eventBus.$emit("selected-item", this.selectedItem);
     },
   },
+    computed: {
+    sortedAlphabetically: function() {
+      function compare(a, b) {
+        if (a.englishName < b.englishName)
+          return -1;
+        if (a.englishName > b.englishName)
+          return 1;
+        return 0
+      }
+      return this.bodies.sort(compare)
+    },
+  //   alternativeName: function () {
+  //   let body
+  //   for (body in this.bodies; body.englishName == ""; body.englishName == body.alternativeName)
+  // }
+    }
 };
 </script>
 

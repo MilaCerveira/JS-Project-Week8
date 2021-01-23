@@ -186,6 +186,6 @@ nav ul li a:hover {
   
 }
 #randomImg {
-    
+    height: 600px;
 }  
 </style>

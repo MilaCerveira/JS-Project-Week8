@@ -44,7 +44,7 @@
 
 <h2> NASA's image of the day </h2>
 <img id='randomImg' :src="imgUrl"></img>
-<carousel></carousel>
+
 <p> this is a test</p> 
 
 </div>

@@ -12,9 +12,9 @@ export default {
       "https://opentdb.com/api.php?amount=5&category=17&difficulty=easy&type=boolean"
     )
       .then((res) => res.json())
-      .then((quiz) => {
+      .then((data) => {
           console.log("quiz", quiz);
-          (this.quiz = quiz)});
+          (this.quiz = data.results)});
   },
   methods: {},
   computed: {},

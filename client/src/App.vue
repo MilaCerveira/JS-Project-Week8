@@ -36,16 +36,21 @@
   </nav>
 </header>
 
-<carousel></carousel>
 
 <div class='bodies-container'>
   <item-dropdown :bodies="bodies"> </item-dropdown>
   <item-detail :items="item"></item-detail>
 </div>
+
       <h2> NASA's image of the day </h2>
   <img id='randomImg' :src="imgUrl"></img>
+<carousel></carousel>
+<p> this is a test</p> 
 
   </div>
+
+
+
 </template>
 
 <script>
@@ -120,6 +125,7 @@ a {
   background-size: cover;
   background-position: center center;
 }
+
 header {
   position: absolute;
   top: 0;

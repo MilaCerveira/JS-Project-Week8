@@ -45,7 +45,7 @@ export default {
                 },
                   {
                     text:'Saturn',
-                    image: 'https://resize.indiatvnews.com/en/resize/newbucket/715_-/2019/12/saturn-moon-1575529154.jpg',
+                    image: 'https://nypost.com/wp-content/uploads/sites/2/2020/01/asteroids-jupiter-01.jpg?quality=80&strip=all',
                 },
                 {
                     text:'Uranus',

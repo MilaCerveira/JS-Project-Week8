@@ -3,10 +3,10 @@
     <select v-on:change="handleSelect" v-model="selectedItem">
       <option disabled value="">Select A Celestial Body...</option>
       <option
-        v-if="item.englishName"
-        v-for="item in sortedAlphabetically"
-        :value="item">
-        {{ item.englishName }}
+        v-if="item1.englishName"
+        v-for="item1 in sortedAlphabetically"
+        :value="item1">
+        {{ item1.englishName }}
       </option>
       <option
         v-if="!item.englishName"

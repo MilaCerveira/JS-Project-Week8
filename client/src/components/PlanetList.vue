@@ -1,10 +1,10 @@
 <template lang="html">
     <div class="dropdown">
-    <input class="dropdown-input" ref="dropdowninput" v-model.trim="inputValue" v-if="Object.keys(selectedItem).length === 0" type="text" placeholder="Find body" />
-    <div v-else @click="resetItem" class="dropdown-selected">{{ selectedItem.englishName }}</div>
+    <input class="dropdown-input" ref="dropdowninput" v-model.trim="inputValue" v-if="Object.keys(selectedItem2).length === 0" type="text" placeholder="Find body" />
+    <div v-else @click="resetItem" class="dropdown-selected">{{ selectedItem2.englishName }}</div>
     <div v-show="inputValue && apiLoaded" class="dropdown-list">
-      <div v-show="itemVisible(item)" v-for="item in itemList.bodies" :key="item.englishName" class="dropdown-item" @click="selectItem(item)">
-      {{item.englishName }}
+      <div v-show="itemVisible(planetItem)" v-for="planetItem in itemList.bodies" :key="planetItem.englishName" class="dropdown-item" @click="selectItem(planetItem)">
+      {{planetItem.englishName }}
     </div>
     </div>
   </div>
@@ -19,7 +19,7 @@ export default {
     return {
       inputValue: "",
       itemList: [],
-      selectedItem: {},
+      selectedItem2: {},
       apiLoaded: false,
       apiUrl: 'http://api.le-systeme-solaire.net/rest/bodies/'
     };
@@ -41,12 +41,12 @@ export default {
       return currentName.includes(currentInput)
     },
     selectItem (theItem) {
-      this.selectedItem = theItem
+      this.selectedItem2 = theItem
       this.inputValue = ''
       this.$emit('on-item-selected', theItem)
     },
     resetItem(){
-      this.selectedItem = {}
+      this.selectedItem2 = {}
       this.$nestTick( () => this.$refs.dropdowninput.focus() )
       this.$emit('on-item-reset')
     }

@@ -6,7 +6,7 @@
       <p v-if="item.isPlanet && item.meanRadius>1188">Type: Planet</p>
       <p v-if="item.isPlanet && item.meanRadius<1188">Type: Dwarf Planet</p>
       <p v-if="!item.isPlanet && !item.moons && !item.aroundPlanet && !item.meanRadius > 600000">Type: Asteroid</p>
-      <p v-if="!item.isPlanet && !item.moons && !item.aroundPlanet && item.density < 1.1">Type: Comet</p>
+      <p v-if="!item.isPlanet && !item.moons && !item.aroundPlanet && !item.meanRadius > 600000 && item.density < 1.1">Type: Comet</p>
 
       <span v-if="!item.isPlanet && item.aroundPlanet">
         <p>Type: Satellite</p>

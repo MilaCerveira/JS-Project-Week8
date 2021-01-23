@@ -49,7 +49,7 @@ export default {
                 },
                 {
                     text:'Uranus',
-                    image: 'https://scx1.b-cdn.net/csz/news/800a/2017/howthesunsin.jpg',
+                    image: 'https://www.weatherboy.com/wp-content/uploads/2017/10/Uranus.jpg',
                 },
                 {
                     text:'Neptune',
@@ -103,8 +103,13 @@ export default {
 
     #slides {
         width: 100%;
-      
+        height: 300px;
         position: relative;
+    }
+
+    #slides h1 {
+        font-family: "Montserrat";
+        color:white;
     }
 
     .slide {
@@ -134,6 +139,7 @@ export default {
         left: 1%;
         transition: transform 0.3s ease-in-out;
         user-select: none;
+        color: white;
     }
 
     .btn-next {

@@ -40,11 +40,9 @@
   <item-dropdown :bodies="bodies"> </item-dropdown>
   <item-detail :items="item"></item-detail>
 </div>
-  <div class="favourite-list">
-   
-  <p> this is where the fav list will be </p>
-  <img class="randomImg" :src="imgUrl"></img>
-  </div>
+      <h2> NASA's image of the day </h2>
+  <img id='randomImg' :src="imgUrl"></img>
+
   </div>
 </template>
 
@@ -77,6 +75,13 @@ export default {
       .then((data) => (this.imgUrls = data));
 
     this.sortAlphabetically();
+
+    fetch(
+      "https://api.nasa.gov/planetary/apod?api_key=FKGwNutpdJ2Irx3SQCknZlIKIwwVYRlY9WvheVfu&count=20"
+    )
+      .then((res) => res.json())
+
+      .then((data) => (this.imgUrl = data));
   },
   methods: {
     sortAlphabetically() {
@@ -84,9 +89,9 @@ export default {
     },
   },
   computed: {
-    randomImageGen() {
-      let randomImg = this.imgUrls[
-        Math.floor(Math.random() * this.imgUrls.length)
+    randomImage() {
+      let randomImg = this.imgUrl[
+        Math.floor(Math.random() * this.imgUrl.length)
       ];
       this.imgUrl = randomImg.hdurl;
     },

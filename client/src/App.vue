@@ -1,4 +1,4 @@
-<template lang=html>
+<template lang="html">
   <div id="app">
       <div class='Img'>
   <div style="background-image: url('https://c4.wallpaperflare.com/wallpaper/166/977/136/cool-space-planet-floating-dark-light-wallpaper-preview.jpg')"></div>
@@ -64,7 +64,7 @@ export default {
     return {
       bodies: [],
       imgUrls: [],
-      imgUrl: ''
+      imgUrl: "",
     };
   },
   components: {
@@ -77,32 +77,34 @@ export default {
       .then((res) => res.json())
       .then((bodies) => (this.bodies = bodies.bodies));
 
+    fetch(
+      "https://api.nasa.gov/planetary/apod?api_key=FKGwNutpdJ2Irx3SQCknZlIKIwwVYRlY9WvheVfu&count=20"
+    )
+      .then((res) => res.json())
+      .then((data) => (this.imgUrls = data));
+
     this.sortAlphabetically();
 
     fetch(
       "https://api.nasa.gov/planetary/apod?api_key=FKGwNutpdJ2Irx3SQCknZlIKIwwVYRlY9WvheVfu&count=20"
     )
       .then((res) => res.json())
-      
+
       .then((data) => (this.imgUrl = data));
-      
-      
-    
-      
   },
   methods: {
     sortAlphabetically() {
       this.bodies.sort((a, b) => (a.englishName > b.englishName ? 1 : -1));
     },
   },
-computed: {
-  randomImage() {
-  let randomImg = this.imgUrl[Math.floor(Math.random()*this.imgUrl.length)]
-  this.imgUrl = randomImg.hdurl;
-  }
-  
-
-}
+  computed: {
+    randomImage() {
+      let randomImg = this.imgUrl[
+        Math.floor(Math.random() * this.imgUrl.length)
+      ];
+      this.imgUrl = randomImg.hdurl;
+    },
+  },
 };
 </script>
 
@@ -144,8 +146,6 @@ header p {
   font-size: 2em;
   margin-bottom: 0.7em;
   font-family: "Montserrat", sans-serif;
-  
-
 }
 h1 {
   font-weight: 600;
@@ -192,10 +192,10 @@ nav ul li a:hover {
     opacity: 1;
     transform: translateY(0);
   }
-  
-  
 }
+
 #randomImg {
     height: 600px;
 }  
+
 </style>

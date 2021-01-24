@@ -48,7 +48,7 @@
 <div class='label-container'>
 <img src="https://freepngimg.com/download/space/23420-7-nasa-file.png" alt="Nasa Icon"style="width:40px;height:40px;">
 
-<h2> images </h2>
+<h2> Images </h2>
 </div>
 <img id='randomImg' :src="imgUrl"></img>
 
@@ -233,6 +233,11 @@ button:hover, button:active {
 .label-container {
   margin-left: 40px;
   margin-top:20px;
+  margin-bottom: 20px;
+}
+.label-container > img{
+  float: left;
+  margin-bottom: 20px;
 }
 
 </style>

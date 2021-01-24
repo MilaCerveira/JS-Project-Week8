@@ -119,7 +119,7 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,100&display=swap");
 body {
   font-size: 14px;
-  font-family: Sans-Serif;
+  font-family: "Montserrat", sans-serif;
   
 }
 * {

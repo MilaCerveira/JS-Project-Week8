@@ -215,9 +215,11 @@ button {
   text-decoration: none;
   font-family: 'Open Sans', sans-serif;
   min-width: 120px;
+  border-radius: 10px;
 }
 button:hover, button:active {
   color:#fff;
   background:blue;
+  
 }
 </style>

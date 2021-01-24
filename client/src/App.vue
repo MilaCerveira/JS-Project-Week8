@@ -46,7 +46,7 @@
 
 <quiz />
 
-<h2> NASA's image of the day </h2>
+<h2> NASA's images </h2>
 <img id='randomImg' :src="imgUrl"></img>
 
 </div>
@@ -117,6 +117,7 @@ export default {
 body {
   font-size: 14px;
   font-family: Sans-Serif;
+  
 }
 * {
   box-sizing: border-box;
@@ -221,5 +222,12 @@ button:hover, button:active {
   color:#fff;
   background:#7E78D2;
   
+}
+.bodies-container {
+  margin-left: 40px;
+  margin-top: 40px;
+}
+h2{
+  margin-left: 40px;
 }
 </style>

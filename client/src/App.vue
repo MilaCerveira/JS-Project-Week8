@@ -1,5 +1,6 @@
 <template lang="html">
   <div id="app">
+    <audio autoplay ref="audio" src="landing.wav"><source src="landing.wav"></audio>
       <div class='Img'>
   <div style="background-image: url('https://c4.wallpaperflare.com/wallpaper/166/977/136/cool-space-planet-floating-dark-light-wallpaper-preview.jpg')"></div>
   
@@ -55,7 +56,6 @@
 </template>
 
 <script>
-
 import ItemDropdown from "@/components/ItemDropdown.vue";
 import ItemDetail from "@/components/ItemDetail.vue";
 import Carousel from "@/components/Carousel.vue";
@@ -73,8 +73,8 @@ export default {
   components: {
     "item-detail": ItemDetail,
     "item-dropdown": ItemDropdown,
-    "carousel": Carousel,
-    "quiz": Quiz,
+    carousel: Carousel,
+    quiz: Quiz,
   },
   mounted() {
     fetch("http://api.le-systeme-solaire.net/rest/bodies/")
@@ -199,8 +199,25 @@ nav ul li a:hover {
 }
 
 #randomImg {
-    height: 800px;
-    width: 100%;
-}  
-
+  height: 800px;
+  width: 100%;
+}
+button {
+  color: blue;
+  background: #fff;
+  border: 2px solid blue;
+  font-size: 17px;
+  padding: 7px 12px;
+  font-weight: normal;
+  margin: 6px 0;
+  margin-right: 12px;
+  display: inline-block;
+  text-decoration: none;
+  font-family: 'Open Sans', sans-serif;
+  min-width: 120px;
+}
+button:hover, button:active {
+  color:#fff;
+  background:blue;
+}
 </style>

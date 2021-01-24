@@ -6,12 +6,23 @@
                     {{ item.category }}
                     {{ item.question }}
                     <div>
-                        True <input type="radio" value="True" />
-                        False <input type="radio" value="False" />
+                        True
+                        <input
+                            type="radio"
+                            value="True"
+                            v-model="answers[item.question]"
+                        />
+                        False
+                        <input
+                            type="radio"
+                            value="False"
+                            v-model="answers[item.question]"
+                        />
+                        <span v-if="result[item.question]">{{ result[item.question] }}</span>
                     </div>
                 </li>
             </ul>
-            <button type="submit">Submit</button>
+            <button type="submit" class="button">Submit</button>
         </form>
     </div>
 </template>
@@ -19,7 +30,10 @@
 export default {
   data() {
     return {
+      result: {},
+      answers: {},
       quiz: [],
+      sound: null,
     };
   },
   components: {},
@@ -31,14 +45,39 @@ export default {
       .then((data) => (this.quiz = data.results));
   },
   methods: {
-      handleSubmit(event) {
-          event.preventDefault();
-          console.log(">>>>>");
+    checkAnswers() {
+        const questions = Object.keys(this.answers);
+
+        questions.forEach((question) => {
+            const quiz = this.quiz.find((q) => q.question === question);
+
+            if (quiz) {
+                this.result[question] = quiz.correct_answer;
+            }
+        });
+
+    },
+    handleSubmit(event) {
+      event.preventDefault();
+      const questions = Object.keys(this.answers);
+
+      if (questions.length < 5) {
+          return;
       }
+
+      this.checkAnswers();
+      console.log(this.answers);
+    },
   },
   computed: {},
 };
 </script>
 <style>
-ul{ list-style-type: none;}
+ul {
+  list-style-type: none;
+}
+
+.button {
+    margin-left: 40px;
+}
 </style>

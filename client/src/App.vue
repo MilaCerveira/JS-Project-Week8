@@ -203,9 +203,9 @@ nav ul li a:hover {
   width: 100%;
 }
 button {
-  color:#B6B8D6;
-  background: #fff;
-  border: 2px solid #B6B8D6;
+  color:white;
+  background: #6F58C9;
+  border: 2px solid #6F58C9;
   font-size: 17px;
   padding: 7px 12px;
   font-weight: normal;

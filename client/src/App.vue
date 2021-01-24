@@ -43,12 +43,13 @@
   <item-dropdown :bodies="bodies"> </item-dropdown>
   <item-detail :items="item"></item-detail>
 </div>
-
+<div class='quiz-title'> <h2> Quiz Time </h2> </div>
 <quiz />
 <div class='label-container'>
 <img src="https://freepngimg.com/download/space/23420-7-nasa-file.png" alt="Nasa Icon"style="width:40px;height:40px;">
-
+<div class='images-title'>
 <h2> Images </h2>
+</div>
 </div>
 <img id='randomImg' :src="imgUrl"></img>
 
@@ -239,5 +240,40 @@ button:hover, button:active {
   float: left;
   margin-bottom: 20px;
 }
+.quiz-title {
+  margin-left: 40px;
+  margin-top:20px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  position: relative;
+}
 
+.quiz-title::before {
+  content: " ";
+  position: absolute;
+  width: 4em;
+  background: #00bfff;
+  height: 0.4em;
+  bottom: 0;
+  z-index: -1;
+  margin-left: -0.1em;
+}
+.images-title {
+  margin-left: 40px;
+  margin-top:20px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  position: relative;
+}
+
+.images-title::before {
+  content: " ";
+  position: absolute;
+  width: 5.8em;
+  background: #00bfff;
+  height: 0.4em;
+  bottom: 0;
+  z-index: -1;
+  margin-left: -0.1em;
+}
 </style>

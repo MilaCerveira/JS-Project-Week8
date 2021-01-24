@@ -45,8 +45,11 @@
 </div>
 
 <quiz />
+<div class='label-container'>
+<img src="https://freepngimg.com/download/space/23420-7-nasa-file.png" alt="Nasa Icon"style="width:40px;height:40px;">
 
-<h2> NASA's images </h2>
+<h2> images </h2>
+</div>
 <img id='randomImg' :src="imgUrl"></img>
 
 </div>
@@ -227,7 +230,9 @@ button:hover, button:active {
   margin-left: 40px;
   margin-top: 40px;
 }
-h2{
+.label-container {
   margin-left: 40px;
+  margin-top:20px;
 }
+
 </style>

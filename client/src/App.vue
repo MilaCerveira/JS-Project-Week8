@@ -209,12 +209,12 @@ button {
   font-size: 17px;
   padding: 7px 12px;
   font-weight: normal;
-  margin: 6px 0;
+  margin: 4px 0;
   margin-right: 12px;
   display: inline-block;
   text-decoration: none;
   font-family: 'Open Sans', sans-serif;
-  min-width: 120px;
+  min-width: 80px;
   border-radius: 10px;
 }
 button:hover, button:active {

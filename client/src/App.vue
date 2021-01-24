@@ -203,9 +203,9 @@ nav ul li a:hover {
   width: 100%;
 }
 button {
-  color: blue;
+  color:#B6B8D6;
   background: #fff;
-  border: 2px solid blue;
+  border: 2px solid #B6B8D6;
   font-size: 17px;
   padding: 7px 12px;
   font-weight: normal;
@@ -219,7 +219,7 @@ button {
 }
 button:hover, button:active {
   color:#fff;
-  background:blue;
+  background:#7E78D2;
   
 }
 </style>

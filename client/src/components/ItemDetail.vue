@@ -64,9 +64,7 @@ export default {
     saveItem: function (e) {
       e.preventDefault();
       const favourite = this.item;
-      FavouriteService.saveFavourite(favourite).then((res) =>
-        eventBus.$emit("item-to-save", this.item)
-      );
+      eventBus.$emit("item-to-save", this.item);
     },
   },
 };

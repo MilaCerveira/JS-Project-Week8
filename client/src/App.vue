@@ -46,7 +46,10 @@
       <!-- <h2> NASA's image of the day </h2>
   <img id='randomImg' :src="imgUrl"></img> -->
   
- 
+ <div class="favourite-list">
+    <h2>Favourite Celestial Bodies</h2>
+    <favourite-list :item="item" /> 
+  </div>
   
 <div class='quiz-title'> <h2> Quiz Time </h2> </div>
 <quiz />
@@ -58,10 +61,8 @@
 </div>
 <img id='randomImg' :src="imgUrl"></img>
 
+
 </div>
-
-
-
 </template>
 
 <script>
@@ -72,6 +73,7 @@ import { eventBus } from "./main.js";
 import FavouriteService from "@/services/FavouriteService.js";
 import Carousel from "@/components/Carousel.vue";
 import Quiz from "@/components/Quiz.vue";
+import FavouriteList from "@/components/FavouriteList.vue";
 
 export default {
   name: "App",
@@ -88,6 +90,7 @@ export default {
     // "planet-list": PlanetList
     carousel: Carousel,
     quiz: Quiz,
+    "favourite-list": FavouriteList,
   },
   mounted() {
     fetch("http://api.le-systeme-solaire.net/rest/bodies/")

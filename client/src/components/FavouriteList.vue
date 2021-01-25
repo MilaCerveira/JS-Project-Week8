@@ -1,24 +1,19 @@
 <template>
-  <div class="favourite-list">
-    <h2>Favourite Celestial Bodies</h2>
-    <div class="fav-list-tem">
-      <li v-for="item in favouriteItems">
-        <p v-if="item.englishName">{{ item.englishName }}</p>
-        <p v-if="!item.englishName">{{ item.alternativeName }}</p>
-        <button v-on:click="deleteFavourite">Remove from Favourites</button>
-      </li>
-    </div>
+  <div class="favourite-container">
+    <favourite v-for="item in favouriteItems" :item="item" />
   </div>
 </template>
 
 <script>
 import FavouriteService from "@/services/FavouriteService.js";
 import { eventBus } from "@/main.js";
-import ItemDetail from "@/ItemDetail.vue";
+import Favourite from "./Favourite.vue";
 
 export default {
   name: "favourite-list",
-  props: [],
+  components: {
+    favourite: Favourite,
+  },
   data() {
     return {
       favouriteItems: [],
@@ -27,8 +22,15 @@ export default {
   mounted() {
     eventBus.$on("item-to-save", (item) => {
       if (!this.favouriteItems.includes(item)) {
-        this.favouriteItems.push(item);
+        FavouriteService.saveFavourite(item).then(
+          this.favouriteItems.push(item)
+        );
       }
+    });
+
+    eventBus.$on("favourite-deleted", (id) => {
+      let index = this.favouriteItems.findIndex((item) => item._id === id);
+      this.favouriteItems.splice(index, 1);
     });
 
     FavouriteService.getFavourites().then(
@@ -39,4 +41,9 @@ export default {
 </script>
 
 <style>
+.favourite-container {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+}
 </style>

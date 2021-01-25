@@ -42,6 +42,7 @@
 <div class='bodies-container'>
   <item-dropdown :bodies="bodies"> </item-dropdown>
   <item-detail :items="item"></item-detail>
+  <planets :bodies="bodies"/>
 </div>
       <!-- <h2> NASA's image of the day </h2>
   <img id='randomImg' :src="imgUrl"></img> -->
@@ -76,6 +77,7 @@
 <script>
 import ItemDropdown from "@/components/ItemDropdown.vue";
 import ItemDetail from "@/components/ItemDetail.vue";
+import Planets from "@/components/Planets.vue";
 // import PlanetList from "@/components/PlanetList.vue";
 import { eventBus } from "./main.js";
 import FavouriteService from "@/services/FavouriteService.js";
@@ -90,7 +92,7 @@ export default {
       imgUrls: [],
       imgUrl: "",
       favouriteItems: [],
-      item: null
+      item: null,
     };
   },
   components: {
@@ -99,6 +101,7 @@ export default {
     // "planet-list": PlanetList
     carousel: Carousel,
     quiz: Quiz,
+    "planets": Planets
   },
   mounted() {
     fetch("http://api.le-systeme-solaire.net/rest/bodies/")
@@ -110,8 +113,6 @@ export default {
     )
       .then((res) => res.json())
       .then((data) => (this.imgUrls = data));
-
-    this.sortAlphabetically();
 
     fetch(
       "https://api.nasa.gov/planetary/apod?api_key=FKGwNutpdJ2Irx3SQCknZlIKIwwVYRlY9WvheVfu&count=20"
@@ -126,19 +127,14 @@ export default {
       }
     });
   },
-  methods: {
-    sortAlphabetically() {
-      this.bodies.sort((a, b) => (a.englishName > b.englishName ? 1 : -1));
-    },
-  },
   computed: {
     randomImage() {
       let randomImg = this.imgUrl[
         Math.floor(Math.random() * this.imgUrl.length)
       ];
       this.imgUrl = randomImg.hdurl;
-    },
-  },
+    }
+  }
 };
 </script>
 

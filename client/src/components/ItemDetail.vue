@@ -35,7 +35,6 @@
         <p>Moons:</p>
         <li v-if="item.moons" v-for="mooon in item.moons">{{ mooon.moon }}</li>
       </ul>
-
       <form v-on:submit.prevent="saveItem">
         <input type="submit" value="Add to Favourites" />
       </form>

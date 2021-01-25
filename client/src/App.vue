@@ -1,17 +1,10 @@
 <template lang="html">
   <div id="app">
-<<<<<<< HEAD
-    <div class='Img'>
-      <div style="background-image: url('https://c4.wallpaperflare.com/wallpaper/166/977/136/cool-space-planet-floating-dark-light-wallpaper-preview.jpg')">
-      </div>  
-    </div>
-=======
     <audio autoplay ref="audio" src="landing.wav"><source src="landing.wav"></audio>
       <div class='Img'>
   <div style="background-image: url('https://c4.wallpaperflare.com/wallpaper/166/977/136/cool-space-planet-floating-dark-light-wallpaper-preview.jpg')"></div>
   
 </div>
->>>>>>> main
 <header>
   <div>
     <section class = "top">
@@ -44,14 +37,6 @@
   </nav>
 </header>
 
-<<<<<<< HEAD
-    <div class='bodies-container'>
-      <item-dropdown :bodies="bodies"> </item-dropdown>
-      <item-detail :items="item"></item-detail>
-      <!-- <planet-list /> -->
-    </div>
-      
-=======
 <carousel></carousel>
 
 <div class='bodies-container'>
@@ -60,7 +45,6 @@
 </div>
       <!-- <h2> NASA's image of the day </h2>
   <img id='randomImg' :src="imgUrl"></img> -->
->>>>>>> main
   
   <div class="favourite-list">
     <h2>Favourite Celestial Bodies</h2>
@@ -92,14 +76,11 @@
 <script>
 import ItemDropdown from "@/components/ItemDropdown.vue";
 import ItemDetail from "@/components/ItemDetail.vue";
-<<<<<<< HEAD
 // import PlanetList from "@/components/PlanetList.vue";
-=======
 import { eventBus } from "./main.js";
 import FavouriteService from "@/services/FavouriteService.js";
 import Carousel from "@/components/Carousel.vue";
 import Quiz from "@/components/Quiz.vue";
->>>>>>> main
 
 export default {
   name: "App",
@@ -114,20 +95,15 @@ export default {
   components: {
     "item-detail": ItemDetail,
     "item-dropdown": ItemDropdown,
-<<<<<<< HEAD
     // "planet-list": PlanetList
-=======
     carousel: Carousel,
     quiz: Quiz,
->>>>>>> main
   },
   mounted() {
     fetch("http://api.le-systeme-solaire.net/rest/bodies/")
       .then((res) => res.json())
       .then((bodies) => (this.bodies = bodies.bodies));
 
-<<<<<<< HEAD
-=======
     fetch(
       "https://api.nasa.gov/planetary/apod?api_key=FKGwNutpdJ2Irx3SQCknZlIKIwwVYRlY9WvheVfu&count=20"
     )
@@ -153,7 +129,6 @@ export default {
     sortAlphabetically() {
       this.bodies.sort((a, b) => (a.englishName > b.englishName ? 1 : -1));
     },
->>>>>>> main
   },
   computed: {
     randomImage() {

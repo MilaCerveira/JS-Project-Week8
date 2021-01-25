@@ -1,30 +1,44 @@
 <template>
   <div v-if="item">
     <div>
-<<<<<<< HEAD:client/src/components/itemDetail.vue
       <h2>Name: {{ item.englishName }}</h2>
-      <p v-if="item.englishName=='Sun'">Type: Star</p>
-      <p v-if="item.isPlanet && item.meanRadius>1188">Type: Planet</p>
-      <p v-if="item.isPlanet && item.meanRadius<1188">Type: Dwarf Planet</p>
-      <p v-if="!item.isPlanet && !item.moons && !item.aroundPlanet && !item.meanRadius > 600000">Type: Asteroid</p>
-      <p v-if="!item.isPlanet && !item.moons && !item.aroundPlanet && !item.meanRadius > 600000 && item.density < 1.1">Type: Comet</p>
+      <p v-if="item.englishName == 'Sun'">Type: Star</p>
+      <p v-if="item.isPlanet && item.meanRadius > 1188">Type: Planet</p>
+      <p v-if="item.isPlanet && item.meanRadius < 1188">Type: Dwarf Planet</p>
+      <p
+        v-if="
+          !item.isPlanet &&
+          !item.moons &&
+          !item.aroundPlanet &&
+          !item.meanRadius > 600000
+        "
+      >
+        Type: Asteroid
+      </p>
+      <p
+        v-if="
+          !item.isPlanet &&
+          !item.moons &&
+          !item.aroundPlanet &&
+          !item.meanRadius > 600000 &&
+          item.density < 1.1
+        "
+      >
+        Type: Comet
+      </p>
 
       <span v-if="!item.isPlanet && item.aroundPlanet">
         <p>Type: Satellite</p>
         <p>Orbits planet: {{ item.aroundPlanet.planet }}</p>
-      </span> 
+      </span>
       <ul v-if="item.isPlanet && item.moons">
         <p>Moons:</p>
         <li v-if="item.moons" v-for="mooon in item.moons">{{ mooon.moon }}</li>
       </ul>
-=======
-      <h2>name:{{ item.englishName }}</h2>
-      <p v-if="item.moons">moons: {{ item.moons }}</p>
-      <p v-if="!item.moons">aroundPlanet: {{ item.aroundPlanet.planet }}</p>
+
       <form v-on:submit.prevent="saveItem">
         <input type="submit" value="Add to Favourites" />
       </form>
->>>>>>> main:client/src/components/ItemDetail.vue
     </div>
   </div>
 </template>

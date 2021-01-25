@@ -29,4 +29,19 @@ div.planetsGrid {
   max-width: 600px;
 }
 
+<<<<<<< HEAD
+=======
+li {
+    width: 150px;
+}
+
+div.planets {
+  width: 600px;
+}
+h2{
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+}
+
+>>>>>>> main
 </style>

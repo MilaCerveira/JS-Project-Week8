@@ -1,5 +1,6 @@
 <template lang="html">
   <div id="app">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <audio autoplay ref="audio" src="landing.wav"><source src="landing.wav"></audio>
       <div class='Img'>
   <div style="background-image: url('https://c4.wallpaperflare.com/wallpaper/166/977/136/cool-space-planet-floating-dark-light-wallpaper-preview.jpg')"></div>
@@ -57,15 +58,23 @@
   </div>
   
 <div class='quiz-title'> <h2> Quiz Time </h2> </div>
-<quiz />
+<quiz></quiz>
+
 <div class='label-container'>
+  
 <img src="https://freepngimg.com/download/space/23420-7-nasa-file.png" alt="Nasa Icon"style="width:40px;height:40px;">
 <div class='images-title'>
 <h2> Images </h2>
 </div>
 </div>
-<img v-if="imgUrls" id='randomImg' :src="imgUrls[0].hdurl"></img>
 
+
+<img v-if="imgUrls" id='randomImg' :src="imgUrls[0].hdurl"></img>
+<div class= 'signup-form'>
+<h2> Join our mailing list </h2>
+</div>
+<signup-form></signup-form>
+<footersm> </footersm>
 
 </div>
 </template>
@@ -74,13 +83,28 @@
 import { eventBus } from "./main.js";
 import ItemDropdown from "@/components/ItemDropdown.vue";
 import ItemDetail from "@/components/ItemDetail.vue";
+<<<<<<< HEAD
 import PlanetsGrid from "@/components/PlanetsGrid.vue";
 import PlanetDetail from "@/components/PlanetDetail.vue";
+=======
+
+import PlanetsGrid from "@/components/PlanetsGrid.vue";
+
+>>>>>>> main
 // import PlanetList from "@/components/PlanetList.vue";
 import FavouriteService from "@/services/FavouriteService.js";
 import Carousel from "@/components/Carousel.vue";
 import Quiz from "@/components/Quiz.vue";
+<<<<<<< HEAD
 import FavouriteList from "@/components/FavouriteList.vue";
+=======
+
+import FavouriteList from "@/components/FavouriteList.vue";
+
+import SignUpForm from "@/components/SignUpForm.vue";
+import Footersm from "@/components/Footersm.vue";
+
+>>>>>>> main
 
 export default {
   name: "App",
@@ -89,11 +113,19 @@ export default {
       bodies: [],
       planets: [],
       imgUrls: [],
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
       imgUrl: "",
       favouriteItems: [],
       item: null,
       selectedPlanet: null,
       selectedCategory: null
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
     };
   },
   components: {
@@ -102,10 +134,22 @@ export default {
     // "planet-list": PlanetList
     carousel: Carousel,
     quiz: Quiz,
+<<<<<<< HEAD
     "planets": PlanetsGrid,
     "planets-grid": PlanetsGrid,
     "planet-detail": PlanetDetail,
     "favourite-list": FavouriteList,
+=======
+    footersm: Footersm,
+
+    "planets": PlanetsGrid,
+    "planets-grid": PlanetsGrid,
+
+    "favourite-list": FavouriteList,
+
+    "signup-form": SignUpForm,
+
+>>>>>>> main
   },
   mounted() {
     fetch("http://api.le-systeme-solaire.net/rest/bodies/")
@@ -334,4 +378,20 @@ li {
   text-transform: uppercase;
   position: relative;
 }
+.signup-form {
+  text-align: center;
+  text-transform: uppercase;
+  position: relative;
+}
+.signup-form::before {
+  content: " ";
+  position: absolute;
+  width: 9em;
+  background: #00bfff;
+  height: 0.4em;
+  bottom: 0;
+  z-index: -1;
+  margin-left: -0.1em;
+}
+
 </style>

@@ -22,7 +22,7 @@
         <a class='active' href='#'>Home</a>
       </li>
       <li>
-        <a href='#'>Planets</a>
+        <a v-on:click="getList(planets)">Planets</a>
       </li>
       <li>
         <a href='#'>Quiz</a>
@@ -42,6 +42,7 @@
 <div class='bodies-container'>
   <item-dropdown :bodies="bodies"> </item-dropdown>
   <item-detail :items="item"></item-detail>
+  <planets-grid :planets="planets"></planets-grid>
 </div>
       <!-- <h2> NASA's image of the day </h2>
   <img id='randomImg' :src="imgUrl"></img> -->
@@ -52,14 +53,20 @@
   </div>
   
 <div class='quiz-title'> <h2> Quiz Time </h2> </div>
-<quiz />
+<quiz></quiz>
+
 <div class='label-container'>
+  
 <img src="https://freepngimg.com/download/space/23420-7-nasa-file.png" alt="Nasa Icon"style="width:40px;height:40px;">
 <div class='images-title'>
 <h2> Images </h2>
 </div>
 </div>
+
+
 <img v-if="imgUrls" id='randomImg' :src="imgUrls[0].hdurl"></img>
+<h2> Join our mailing list </h2>
+<signup-form></signup-form>
 
 
 </div>
@@ -68,19 +75,33 @@
 <script>
 import ItemDropdown from "@/components/ItemDropdown.vue";
 import ItemDetail from "@/components/ItemDetail.vue";
+
+import PlanetsGrid from "@/components/PlanetsGrid.vue";
+
 // import PlanetList from "@/components/PlanetList.vue";
 import { eventBus } from "./main.js";
 import FavouriteService from "@/services/FavouriteService.js";
 import Carousel from "@/components/Carousel.vue";
 import Quiz from "@/components/Quiz.vue";
+
 import FavouriteList from "@/components/FavouriteList.vue";
+
+import SignUpForm from "@/components/SignUpForm.vue";
+
 
 export default {
   name: "App",
   data() {
     return {
       bodies: [],
+      planets: [],
       imgUrls: [],
+
+      imgUrl: "",
+      favouriteItems: [],
+      item: null,
+      selectedCategory: null
+
     };
   },
   components: {
@@ -89,12 +110,25 @@ export default {
     // "planet-list": PlanetList
     carousel: Carousel,
     quiz: Quiz,
+
+    "planets": PlanetsGrid,
+    "planets-grid": PlanetsGrid,
+
     "favourite-list": FavouriteList,
+
+    "signup-form": SignUpForm,
+
   },
   mounted() {
     fetch("http://api.le-systeme-solaire.net/rest/bodies/")
       .then((res) => res.json())
-      .then((bodies) => (this.bodies = bodies.bodies));
+      .then((bodies) => {
+        this.bodies = bodies.bodies
+        this.planets = this.getPlanets(bodies.bodies)
+        this.sortedByDistanceFromSun()
+      
+      })
+      
 
     fetch(
       "https://api.nasa.gov/planetary/apod?api_key=FKGwNutpdJ2Irx3SQCknZlIKIwwVYRlY9WvheVfu&count=20"
@@ -102,14 +136,45 @@ export default {
       .then((res) => res.json())
       .then((data) => (this.imgUrls = data));
 
-    this.sortAlphabetically();
+    fetch(
+      "https://api.nasa.gov/planetary/apod?api_key=FKGwNutpdJ2Irx3SQCknZlIKIwwVYRlY9WvheVfu&count=20"
+    )
+      .then((res) => res.json())
+
+      .then((data) => (this.imgUrl = data));
+
+    eventBus.$on("item-to-save", (item) => {
+      if (!this.favouriteItems.includes(item)) {
+        this.favouriteItems.push(item);
+      }
+    });
+  },
+  computed: {
+    randomImage() {
+      let randomImg = this.imgUrl[
+        Math.floor(Math.random() * this.imgUrl.length)
+      ];
+      this.imgUrl = randomImg.hdurl;
+    }
   },
   methods: {
-    sortAlphabetically() {
-      this.bodies.sort((a, b) => (a.englishName > b.englishName ? 1 : -1));
+    // getList: function(category) {
+    //   this.selectedCategory = category
+    // }
+      getPlanets: function(bodies) {
+      const result = bodies.filter(body => {return body.isPlanet == true && body.meanRadius>1188}) 
+      return result
     },
-  },
-  computed: {},
+    sortedByDistanceFromSun: function () {
+      function compare(a, b)  {
+        if (a.semimajorAxis < b.semimajorAxis) return -1;
+        if (a.semimajorAxis > b.semimajorAxis) return 1;
+        return 0;
+      }
+      return this.planets.sort(compare)
+    }
+
+  }
 };
 </script>
 

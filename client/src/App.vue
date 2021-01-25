@@ -52,16 +52,18 @@
   </div>
   
 <div class='quiz-title'> <h2> Quiz Time </h2> </div>
-<quiz />
+<quiz></quiz>
+
 <div class='label-container'>
+  
 <img src="https://freepngimg.com/download/space/23420-7-nasa-file.png" alt="Nasa Icon"style="width:40px;height:40px;">
 <div class='images-title'>
 <h2> Images </h2>
 </div>
 </div>
 <img id='randomImg' :src="imgUrl"></img>
-
-
+<h2> Join our mailing list </h2>
+<signup-form></signup-form>
 </div>
 </template>
 
@@ -74,6 +76,7 @@ import FavouriteService from "@/services/FavouriteService.js";
 import Carousel from "@/components/Carousel.vue";
 import Quiz from "@/components/Quiz.vue";
 import FavouriteList from "@/components/FavouriteList.vue";
+import SignUpForm from "@/components/SignUpForm.vue";
 
 export default {
   name: "App",
@@ -91,6 +94,7 @@ export default {
     carousel: Carousel,
     quiz: Quiz,
     "favourite-list": FavouriteList,
+    "signup-form": SignUpForm,
   },
   mounted() {
     fetch("http://api.le-systeme-solaire.net/rest/bodies/")

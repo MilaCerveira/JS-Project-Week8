@@ -20,9 +20,12 @@
     <ul>
       <li>
         <a class='active' href='#'>Home</a>
+      <li>
+        <a class='active' href='#'>Sun</a>
+      </li>
       </li>
       <li>
-        <a v-on:click="getList(planets)">Planets</a>
+        <!-- <a v-on:click="getList(planets)">Planets</a> -->
       </li>
       <li>
         <a href='#'>Quiz</a>
@@ -107,7 +110,6 @@ export default {
         this.bodies = bodies.bodies
         this.planets = this.getPlanets(bodies.bodies)
         this.sortedByDistanceFromSun()
-      
       })
       
 
@@ -139,9 +141,6 @@ export default {
     }
   },
   methods: {
-    // getList: function(category) {
-    //   this.selectedCategory = category
-    // }
       getPlanets: function(bodies) {
       const result = bodies.filter(body => {return body.isPlanet == true && body.meanRadius>1188}) 
       return result
@@ -153,7 +152,8 @@ export default {
         return 0;
       }
       return this.planets.sort(compare)
-    }
+    },
+
 
   }
 };

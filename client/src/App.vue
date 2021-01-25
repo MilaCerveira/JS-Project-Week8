@@ -59,7 +59,7 @@
 <h2> Images </h2>
 </div>
 </div>
-<img id='randomImg' :src="imgUrl"></img>
+<img v-if="imgUrls" id='randomImg' :src="imgUrls[0].hdurl"></img>
 
 
 </div>
@@ -81,7 +81,6 @@ export default {
     return {
       bodies: [],
       imgUrls: [],
-      imgUrl: "",
     };
   },
   components: {
@@ -104,27 +103,13 @@ export default {
       .then((data) => (this.imgUrls = data));
 
     this.sortAlphabetically();
-
-    fetch(
-      "https://api.nasa.gov/planetary/apod?api_key=FKGwNutpdJ2Irx3SQCknZlIKIwwVYRlY9WvheVfu&count=20"
-    )
-      .then((res) => res.json())
-
-      .then((data) => (this.imgUrl = data));
   },
   methods: {
     sortAlphabetically() {
       this.bodies.sort((a, b) => (a.englishName > b.englishName ? 1 : -1));
     },
   },
-  computed: {
-    randomImage() {
-      let randomImg = this.imgUrl[
-        Math.floor(Math.random() * this.imgUrl.length)
-      ];
-      this.imgUrl = randomImg.hdurl;
-    },
-  },
+  computed: {},
 };
 </script>
 
@@ -295,5 +280,4 @@ li {
   text-transform: uppercase;
   position: relative;
 }
-
 </style>

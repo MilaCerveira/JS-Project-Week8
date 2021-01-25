@@ -46,23 +46,22 @@ export default {
   },
   methods: {
     checkAnswers() {
-        const questions = Object.keys(this.answers);
+      const questions = Object.keys(this.answers);
+      console.log(questions);
+      questions.forEach((question) => {
+        const quiz = this.quiz.find((q) => q.question === question);
 
-        questions.forEach((question) => {
-            const quiz = this.quiz.find((q) => q.question === question);
-
-            if (quiz) {
-                this.result[question] = quiz.correct_answer;
-            }
-        });
-
+        if (quiz) {
+          this.result[question] = quiz.correct_answer;
+        }
+      });
     },
     handleSubmit(event) {
       event.preventDefault();
       const questions = Object.keys(this.answers);
 
       if (questions.length < 5) {
-          return;
+        return;
       }
 
       this.checkAnswers();
@@ -78,6 +77,6 @@ ul {
 }
 
 .button {
-    margin-left: 40px;
+  margin-left: 40px;
 }
 </style>

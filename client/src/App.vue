@@ -70,12 +70,7 @@
 <h2> Join our mailing list </h2>
 </div>
 <signup-form></signup-form>
-<div class="footer">
-<a href="#" class="fa fa-facebook"></a>
-<a href="#" class="fa fa-twitter"></a>
-<a href='#' class="fa fa-instagram"></a>
-<a href='#' class='fa fa-linkedin'></a>
-</div>
+<footersm> </footersm>
 
 </div>
 </template>
@@ -95,6 +90,7 @@ import Quiz from "@/components/Quiz.vue";
 import FavouriteList from "@/components/FavouriteList.vue";
 
 import SignUpForm from "@/components/SignUpForm.vue";
+import Footersm from "@/components/Footersm.vue";
 
 
 export default {
@@ -118,6 +114,7 @@ export default {
     // "planet-list": PlanetList
     carousel: Carousel,
     quiz: Quiz,
+    footersm: Footersm,
 
     "planets": PlanetsGrid,
     "planets-grid": PlanetsGrid,
@@ -354,23 +351,19 @@ li {
   position: relative;
 }
 .signup-form {
-  margin-left: 40px;
+  text-align: center;
   text-transform: uppercase;
   position: relative;
 }
 .signup-form::before {
   content: " ";
   position: absolute;
-  width: 4em;
+  width: 9em;
   background: #00bfff;
   height: 0.4em;
   bottom: 0;
   z-index: -1;
   margin-left: -0.1em;
 }
-.footer {
-    background-color: black;
-    padding: 20px 0;
-    text-align: center;
-}
+
 </style>

@@ -31,6 +31,6 @@ data(){
 </script>
 <style scoped>
 #signup-form{
-  margin-left: 40px;
+  text-align: center;
 }
 </style>

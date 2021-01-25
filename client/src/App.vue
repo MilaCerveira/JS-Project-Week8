@@ -47,15 +47,9 @@
       <!-- <h2> NASA's image of the day </h2>
   <img id='randomImg' :src="imgUrl"></img> -->
   
-  <div class="favourite-list">
+ <div class="favourite-list">
     <h2>Favourite Celestial Bodies</h2>
-    <div class="fav-list-tem">
-      <li v-for="item in favouriteItems">
-        <p v-if="item.englishName">{{item.englishName}}</p>
-        <p v-if="!item.englishName">{{item.alternativeName}}</p>
-
-      </li>
-    </div>
+    <favourite-list :item="item" /> 
   </div>
   
 <div class='quiz-title'> <h2> Quiz Time </h2> </div>
@@ -66,23 +60,28 @@
 <h2> Images </h2>
 </div>
 </div>
-<img id='randomImg' :src="imgUrl"></img>
+<img v-if="imgUrls" id='randomImg' :src="imgUrls[0].hdurl"></img>
+
 
 </div>
-
-
-
 </template>
 
 <script>
 import ItemDropdown from "@/components/ItemDropdown.vue";
 import ItemDetail from "@/components/ItemDetail.vue";
+<<<<<<< HEAD
 import PlanetsGrid from "@/components/PlanetsGrid.vue";
+=======
+>>>>>>> main
 // import PlanetList from "@/components/PlanetList.vue";
 import { eventBus } from "./main.js";
 import FavouriteService from "@/services/FavouriteService.js";
 import Carousel from "@/components/Carousel.vue";
 import Quiz from "@/components/Quiz.vue";
+<<<<<<< HEAD
+=======
+import FavouriteList from "@/components/FavouriteList.vue";
+>>>>>>> main
 
 export default {
   name: "App",
@@ -91,10 +90,13 @@ export default {
       bodies: [],
       planets: [],
       imgUrls: [],
+<<<<<<< HEAD
       imgUrl: "",
       favouriteItems: [],
       item: null,
       selectedCategory: null
+=======
+>>>>>>> main
     };
   },
   components: {
@@ -103,8 +105,12 @@ export default {
     // "planet-list": PlanetList
     carousel: Carousel,
     quiz: Quiz,
+<<<<<<< HEAD
     "planets": PlanetsGrid,
     "planets-grid": PlanetsGrid
+=======
+    "favourite-list": FavouriteList,
+>>>>>>> main
   },
   mounted() {
     fetch("http://api.le-systeme-solaire.net/rest/bodies/")
@@ -326,5 +332,10 @@ button:active {
 }
 li {
   list-style: none;
+}
+.favourite-list {
+  margin-left: 40px;
+  text-transform: uppercase;
+  position: relative;
 }
 </style>

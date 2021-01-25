@@ -1,5 +1,5 @@
 <template lang="html">
-  <ul>
+  <ul v-on:click="displayInfo">
     <img class="icon" v-if="planet.englishName == 'Mercury'" src="@/assets/Planets/Mercury.png" />
     <img class="icon" v-if="planet.englishName == 'Venus'" src="@/assets/Planets/Venus.png" />
     <img class="icon" v-if="planet.englishName == 'Earth'" src="@/assets/Planets/Earth.png" />
@@ -16,6 +16,7 @@
 <script>
 
 import { eventBus } from '../main.js';
+
 export default {
   name: "planets-grid-item",
   props: ["planet"],
@@ -24,26 +25,25 @@ export default {
       eventBus.$emit("planet-selected", this.planet)
     }
   }
-
 }
 </script>
 
 <style>
 .icon {
-  width: 30px
+  width: 30px;
 }
+
 ul {
   display: flex;
   align-items: center;
   padding: 5px;
   width: 150px;
-
 }
+
 .icon {
 width: 50px;
 height: 50px;
-padding: 3px
+padding: 3px;
 }
-
 
 </style>

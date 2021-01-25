@@ -65,7 +65,9 @@
 
 
 <img v-if="imgUrls" id='randomImg' :src="imgUrls[0].hdurl"></img>
+<div class= 'signup-form'>
 <h2> Join our mailing list </h2>
+</div>
 <signup-form></signup-form>
 
 
@@ -344,5 +346,20 @@ li {
   margin-left: 40px;
   text-transform: uppercase;
   position: relative;
+}
+.signup-form {
+  margin-left: 40px;
+  text-transform: uppercase;
+  position: relative;
+}
+.signup-form::before {
+  content: " ";
+  position: absolute;
+  width: 4em;
+  background: #00bfff;
+  height: 0.4em;
+  bottom: 0;
+  z-index: -1;
+  margin-left: -0.1em;
 }
 </style>

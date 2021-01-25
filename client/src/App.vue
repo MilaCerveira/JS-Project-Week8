@@ -64,11 +64,9 @@
 </div>
 
 
+<img v-if="imgUrls" id='randomImg' :src="imgUrls[0].hdurl"></img>
 <h2> Join our mailing list </h2>
 <signup-form></signup-form>
-
-<img v-if="imgUrls" id='randomImg' :src="imgUrls[0].hdurl"></img>
-
 
 
 </div>

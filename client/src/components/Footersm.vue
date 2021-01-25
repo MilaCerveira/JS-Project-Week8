@@ -131,6 +131,8 @@ ul.social li {
     line-height: 40px;
     text-align: center;
   }
-h3 { text-align: center;
+  h3 { text-align: center;
 }
+
+
 </style>

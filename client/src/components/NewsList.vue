@@ -63,6 +63,7 @@ export default {
   margin-top: 20px;
   margin-bottom: 20px;
   font-family: "Montserrat", sans-serif;
+  
 }
 .news-container > img {
   float: left;

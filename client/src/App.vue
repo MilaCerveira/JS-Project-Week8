@@ -273,6 +273,7 @@ nav ul li a:hover {
 }
 .quote-container {
   text-align: center;
+  
 }
 .top {
   animation: fadeIn 4s forwards;

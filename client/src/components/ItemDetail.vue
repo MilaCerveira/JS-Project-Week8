@@ -12,7 +12,7 @@
 </template>
 <script>
 import { eventBus } from "../main.js";
-import FavouriteService from "../services/FavouritesService.js";
+import FavouriteService from "@/services/FavouriteService.js";
 
 export default {
   name: "item-detail",

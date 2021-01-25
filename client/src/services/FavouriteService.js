@@ -1,4 +1,4 @@
-const baseUrl = 'http://localhost:3000/api/favourites/'
+const baseURL = 'http://localhost:3000/api/favourites/'
 
 export default {
   getFavourites(){

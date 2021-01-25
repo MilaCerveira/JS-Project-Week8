@@ -12,7 +12,7 @@
         <img class="icon" v-if="planet.englishName == 'Jupiter'" src="@/assets/Planets/Jupiter.png" />
         <img class="icon" v-if="planet.englishName == 'Uranus'" src="@/assets/Planets/Uranus.jpg" />
         <img class="icon" v-if="planet.englishName == 'Neptune'" src="@/assets/Planets/Neptune.png" />
-        <img class="icon" v-if="planet.englishName == 'Pluto'" src="@/assets/Planets/Pluto.jpg" />
+        <img class="icon" v-if="planet.englishName == 'Pluto'" src="@/assets/Planets/Pluto.png" />
         <p v-if="planet.englishName">{{planet.englishName}}</p>
         </span>
       </li>
@@ -23,29 +23,10 @@
 
 <script>
 export default {
-  name: "planet-list",
-  props: ["bodies"],
-  data () {
-    return {
-      planets: []
-    }
-  },
+  name: "planets-grid",
+  props: ["planets"],
   components: {
     // "planet-list-item": PlanetListItem
-  },
-  computed: {
-    getPlanets: function() {
-      const result = this.bodies.filter(body => {return body.isPlanet == true && body.meanRadius>1188}) 
-      this.planets = result
-    },
-    sortedByDistanceFromSun: function () {
-      function compare(a, b)  {
-        if (a.semimajorAxis < b.semimajorAxis) return -1;
-        if (a.semimajorAxis > b.semimajorAxis) return 1;
-        return 0;
-      }
-      return this.planets.sort(compare)
-    }
   }
 }
 </script>
@@ -58,11 +39,29 @@ export default {
 span {
   display: flex;
   align-items: center;
+  padding: 5px;
+  width: 150px;
+
 }
 .icon {
-width: 30px;
-height: 30px;
+width: 50px;
+height: 50px;
 padding: 3px
+}
+
+ul {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-auto-flow: column;
+}
+
+li {
+    width: 150px;
+}
+
+div.planets {
+  width: 600px;
 }
 
 

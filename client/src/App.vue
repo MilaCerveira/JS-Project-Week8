@@ -22,7 +22,7 @@
         <a class='active' href='#'>Home</a>
       </li>
       <li>
-        <a href='#'>Planets</a>
+        <a v-on:click="getList(planets)">Planets</a>
       </li>
       <li>
         <a href='#'>Quiz</a>
@@ -42,7 +42,7 @@
 <div class='bodies-container'>
   <item-dropdown :bodies="bodies"> </item-dropdown>
   <item-detail :items="item"></item-detail>
-  <planets :bodies="bodies"/>
+  <planets-grid :planets="planets"></planets-grid>
 </div>
       <!-- <h2> NASA's image of the day </h2>
   <img id='randomImg' :src="imgUrl"></img> -->
@@ -77,7 +77,7 @@
 <script>
 import ItemDropdown from "@/components/ItemDropdown.vue";
 import ItemDetail from "@/components/ItemDetail.vue";
-import Planets from "@/components/Planets.vue";
+import PlanetsGrid from "@/components/PlanetsGrid.vue";
 // import PlanetList from "@/components/PlanetList.vue";
 import { eventBus } from "./main.js";
 import FavouriteService from "@/services/FavouriteService.js";
@@ -89,10 +89,12 @@ export default {
   data() {
     return {
       bodies: [],
+      planets: [],
       imgUrls: [],
       imgUrl: "",
       favouriteItems: [],
       item: null,
+      selectedCategory: null
     };
   },
   components: {
@@ -101,12 +103,19 @@ export default {
     // "planet-list": PlanetList
     carousel: Carousel,
     quiz: Quiz,
-    "planets": Planets
+    "planets": PlanetsGrid,
+    "planets-grid": PlanetsGrid
   },
   mounted() {
     fetch("http://api.le-systeme-solaire.net/rest/bodies/")
       .then((res) => res.json())
-      .then((bodies) => (this.bodies = bodies.bodies));
+      .then((bodies) => {
+        this.bodies = bodies.bodies
+        this.planets = this.getPlanets(bodies.bodies)
+        this.sortedByDistanceFromSun()
+      
+      })
+      
 
     fetch(
       "https://api.nasa.gov/planetary/apod?api_key=FKGwNutpdJ2Irx3SQCknZlIKIwwVYRlY9WvheVfu&count=20"
@@ -134,6 +143,24 @@ export default {
       ];
       this.imgUrl = randomImg.hdurl;
     }
+  },
+  methods: {
+    // getList: function(category) {
+    //   this.selectedCategory = category
+    // }
+      getPlanets: function(bodies) {
+      const result = bodies.filter(body => {return body.isPlanet == true && body.meanRadius>1188}) 
+      return result
+    },
+    sortedByDistanceFromSun: function () {
+      function compare(a, b)  {
+        if (a.semimajorAxis < b.semimajorAxis) return -1;
+        if (a.semimajorAxis > b.semimajorAxis) return 1;
+        return 0;
+      }
+      return this.planets.sort(compare)
+    }
+
   }
 };
 </script>

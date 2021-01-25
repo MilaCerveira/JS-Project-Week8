@@ -1,5 +1,6 @@
 <template lang="html">
   <div id="app">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <audio autoplay ref="audio" src="landing.wav"><source src="landing.wav"></audio>
       <div class='Img'>
   <div style="background-image: url('https://c4.wallpaperflare.com/wallpaper/166/977/136/cool-space-planet-floating-dark-light-wallpaper-preview.jpg')"></div>
@@ -69,7 +70,11 @@
 <h2> Join our mailing list </h2>
 </div>
 <signup-form></signup-form>
-
+<div class="footer">
+<a href="#" class="fa fa-facebook"></a>
+<a href="#" class="fa fa-twitter"></a>
+<a href='#' class="fa fa-instagram"></a>
+</div>
 
 </div>
 </template>
@@ -361,5 +366,10 @@ li {
   bottom: 0;
   z-index: -1;
   margin-left: -0.1em;
+}
+.footer {
+    background-color: black;
+    padding: 20px 0;
+    text-align: center;
 }
 </style>

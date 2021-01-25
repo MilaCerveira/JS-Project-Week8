@@ -60,7 +60,6 @@ export default {
 </script>
 <style scoped>
 .news-container {
-  
   margin-top: 20px;
   margin-bottom: 20px;
   font-family: "Montserrat", sans-serif;

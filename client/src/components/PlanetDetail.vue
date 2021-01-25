@@ -37,14 +37,14 @@ export default {
 <style>
 
 #planetDetail {
-  border: 1px black solid;
+  border: 1px black solid; 
 }
 
 .moons {
 display: flex;
 flex-direction: row;
 flex-wrap: wrap;
-}
+} 
 
 /* .moons {
   display: grid;

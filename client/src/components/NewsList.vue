@@ -60,7 +60,7 @@ export default {
 </script>
 <style scoped>
 .news-container {
-  margin-left: 40px;
+  
   margin-top: 20px;
   margin-bottom: 20px;
   font-family: "Montserrat", sans-serif;
@@ -69,4 +69,5 @@ export default {
   float: left;
   margin-bottom: 20px;
 }
+
 </style>

@@ -206,6 +206,7 @@ export default {
 body {
   font-size: 14px;
   font-family: "Montserrat", sans-serif;
+  margin-left: 40px;
 }
 * {
   box-sizing: border-box;
@@ -312,11 +313,9 @@ button:active {
   background: #7e78d2;
 }
 .bodies-container {
-  margin-left: 40px;
   margin-top: 40px;
 }
 .label-container {
-  margin-left: 40px;
   margin-top: 20px;
   margin-bottom: 20px;
 }
@@ -325,7 +324,6 @@ button:active {
   margin-bottom: 20px;
 }
 .quiz-title {
-  margin-left: 40px;
   margin-top: 20px;
   margin-bottom: 20px;
   text-transform: uppercase;
@@ -343,7 +341,6 @@ button:active {
   margin-left: -0.1em;
 }
 .images-title {
-  margin-left: 40px;
   margin-top: 20px;
   margin-bottom: 20px;
   text-transform: uppercase;
@@ -364,7 +361,6 @@ li {
   list-style: none;
 }
 .favourite-list {
-  margin-left: 40px;
   text-transform: uppercase;
   position: relative;
 }

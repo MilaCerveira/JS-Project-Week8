@@ -1,7 +1,7 @@
 <template>
   <div v-if="item">
     <div>
-      <h2>Name: {{ item.englishName }}</h2>
+      <h2 v-model="name">Name: {{ item.englishName }}</h2>
       <p v-if="item.englishName == 'Sun'">Type: Star</p>
       <p v-if="item.isPlanet && item.meanRadius > 1188">Type: Planet</p>
       <p v-if="item.isPlanet && item.meanRadius < 1188">Type: Dwarf Planet</p>
@@ -50,6 +50,9 @@ export default {
   data() {
     return {
       item: null,
+      name: "",
+      type: "",
+      discoveredBy: "",
     };
   },
   mounted() {
@@ -58,8 +61,12 @@ export default {
     });
   },
   methods: {
-    saveItem: function () {
-      eventBus.$emit("item-to-save", this.item);
+    saveItem: function (e) {
+      e.preventDefault();
+      const favourite = this.item;
+      FavouriteService.saveFavourite(favourite).then((res) =>
+        eventBus.$emit("item-to-save", this.item)
+      );
     },
   },
 };

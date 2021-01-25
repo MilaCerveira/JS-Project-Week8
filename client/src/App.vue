@@ -292,5 +292,8 @@ li {
 }
 .favourite-list {
   margin-left: 40px;
+  text-transform: uppercase;
+  position: relative;
 }
+
 </style>

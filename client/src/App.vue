@@ -46,16 +46,7 @@
       <!-- <h2> NASA's image of the day </h2>
   <img id='randomImg' :src="imgUrl"></img> -->
   
-  <div class="favourite-list">
-    <h2>Favourite Celestial Bodies</h2>
-    <div class="fav-list-tem">
-      <li v-for="item in favouriteItems">
-        <p v-if="item.englishName">{{item.englishName}}</p>
-        <p v-if="!item.englishName">{{item.alternativeName}}</p>
-
-      </li>
-    </div>
-  </div>
+ 
   
 <div class='quiz-title'> <h2> Quiz Time </h2> </div>
 <quiz />
@@ -89,7 +80,6 @@ export default {
       bodies: [],
       imgUrls: [],
       imgUrl: "",
-      favouriteItems: [],
     };
   },
   components: {
@@ -118,16 +108,6 @@ export default {
       .then((res) => res.json())
 
       .then((data) => (this.imgUrl = data));
-
-    eventBus.$on("item-to-save", (item) => {
-      if (!this.favouriteItems.includes(item)) {
-        this.favouriteItems.push(item);
-      }
-    });
-
-    FavouriteService.getFavourites().then(
-      (favourites) => (this.favouriteItems = favourites)
-    );
   },
   methods: {
     sortAlphabetically() {

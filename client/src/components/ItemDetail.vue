@@ -5,7 +5,7 @@
       <p v-if="item.moons">moons: {{ item.moons }}</p>
       <p v-if="!item.moons">aroundPlanet: {{ item.aroundPlanet.planet }}</p>
       <form v-on:submit.prevent="saveItem">
-        <input type="submit" value="Add to Favourites" />
+        <input type="submit" method="post" value="Add to Favourites" />
       </form>
     </div>
   </div>

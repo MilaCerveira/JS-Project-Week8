@@ -76,13 +76,10 @@
 <script>
 import ItemDropdown from "@/components/ItemDropdown.vue";
 import ItemDetail from "@/components/ItemDetail.vue";
-<<<<<<< HEAD
 import { eventBus } from "./main.js";
 import FavouriteService from "@/services/FavouriteService.js";
-=======
 import Carousel from "@/components/Carousel.vue";
 import Quiz from "@/components/Quiz.vue";
->>>>>>> main
 
 export default {
   name: "App",
@@ -125,6 +122,10 @@ export default {
         this.favouriteItems.push(item);
       }
     });
+
+    FavouriteService.getFavourites().then(
+      (favourites) => (this.favouriteItems = favourites)
+    );
   },
   methods: {
     sortAlphabetically() {

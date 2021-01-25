@@ -55,6 +55,7 @@
   
 <div class='quiz-title'> <h2> Quiz Time </h2> </div>
 <quiz></quiz>
+<NewsList />
 
 <div class='label-container'>
   
@@ -80,7 +81,7 @@ import ItemDropdown from "@/components/ItemDropdown.vue";
 import ItemDetail from "@/components/ItemDetail.vue";
 
 import PlanetsGrid from "@/components/PlanetsGrid.vue";
-
+import NewsList from "@/components/NewsList";
 // import PlanetList from "@/components/PlanetList.vue";
 import { eventBus } from "./main.js";
 import FavouriteService from "@/services/FavouriteService.js";
@@ -100,6 +101,7 @@ export default {
       bodies: [],
       planets: [],
       imgUrls: [],
+      NewsList: NewsList,
 
       imgUrl: "",
       favouriteItems: [],
@@ -115,6 +117,7 @@ export default {
     carousel: Carousel,
     quiz: Quiz,
     footersm: Footersm,
+    NewsList: NewsList,
 
     "planets": PlanetsGrid,
     "planets-grid": PlanetsGrid,
@@ -277,8 +280,8 @@ button {
   color: white;
   background: #6f58c9;
   border: 2px solid #6f58c9;
-  font-size: 17px;
-  padding: 7px 12px;
+  font-size: 12px;
+  padding: 5px 5px;
   font-weight: normal;
   margin: 4px 0;
   margin-right: 12px;

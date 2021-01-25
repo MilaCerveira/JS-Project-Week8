@@ -63,6 +63,9 @@ li {
 div.planets {
   width: 600px;
 }
-
+h2{
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+}
 
 </style>

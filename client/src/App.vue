@@ -76,6 +76,7 @@
 <script>
 import ItemDropdown from "@/components/ItemDropdown.vue";
 import ItemDetail from "@/components/ItemDetail.vue";
+// import PlanetList from "@/components/PlanetList.vue";
 import { eventBus } from "./main.js";
 import FavouriteService from "@/services/FavouriteService.js";
 import Carousel from "@/components/Carousel.vue";
@@ -94,6 +95,7 @@ export default {
   components: {
     "item-detail": ItemDetail,
     "item-dropdown": ItemDropdown,
+    // "planet-list": PlanetList
     carousel: Carousel,
     quiz: Quiz,
   },

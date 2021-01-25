@@ -4,17 +4,15 @@
       <option disabled value="">Select A Celestial Body...</option>
 
       <option
-        v-if="item.englishName"
-        v-for="item in sortedAlphabetically"
-        :value="item"
-      >
-        {{ item.englishName }}
+        v-if="item1.englishName"
+        v-for="item1 in sortedAlphabetically"
+        :value="item1">
+        {{ item1.englishName }}
       </option>
       <option
         v-if="!item.englishName"
         v-for="item in sortedAlphabetically"
-        :value="item"
-      >
+        :value="item">
         {{ item.alternativeName }}
       </option>
     </select>
@@ -28,7 +26,7 @@ export default {
   name: "item-dropdown",
   data() {
     return {
-      selectedItem: {},
+      selectedItem: {}
     };
   },
   props: ["bodies"],
@@ -48,10 +46,6 @@ export default {
       }
       return this.bodies.sort(compare);
     },
-    //   alternativeName: function () {
-    //   let body
-    //   for (body in this.bodies; body.englishName == ""; body.englishName == body.alternativeName)
-    // }
   },
 };
 </script>

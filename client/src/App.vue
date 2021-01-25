@@ -21,9 +21,12 @@
     <ul>
       <li>
         <a class='active' href='#'>Home</a>
+      <li>
+        <a class='active' href='#'>Sun</a>
+      </li>
       </li>
       <li>
-        <a v-on:click="getList(planets)">Planets</a>
+        <!-- <a v-on:click="getList(planets)">Planets</a> -->
       </li>
       <li>
         <a href='#'>Quiz</a>
@@ -44,6 +47,7 @@
   <item-dropdown :bodies="bodies"> </item-dropdown>
   <item-detail :items="item"></item-detail>
   <planets-grid :planets="planets"></planets-grid>
+  <planet-detail :planet="selectedPlanet"></planet-detail>
 </div>
       <!-- <h2> NASA's image of the day </h2>
   <img id='randomImg' :src="imgUrl"></img> -->
@@ -77,13 +81,17 @@
 </template>
 
 <script>
+import { eventBus } from "./main.js";
 import ItemDropdown from "@/components/ItemDropdown.vue";
 import ItemDetail from "@/components/ItemDetail.vue";
 
 import PlanetsGrid from "@/components/PlanetsGrid.vue";
+
 import NewsList from "@/components/NewsList";
+
+import PlanetDetail from "@/components/PlanetDetail.vue";
+
 // import PlanetList from "@/components/PlanetList.vue";
-import { eventBus } from "./main.js";
 import FavouriteService from "@/services/FavouriteService.js";
 import Carousel from "@/components/Carousel.vue";
 import Quiz from "@/components/Quiz.vue";
@@ -101,13 +109,15 @@ export default {
       bodies: [],
       planets: [],
       imgUrls: [],
+
       NewsList: NewsList,
+
 
       imgUrl: "",
       favouriteItems: [],
       item: null,
+      selectedPlanet: null,
       selectedCategory: null
-
     };
   },
   components: {
@@ -116,6 +126,10 @@ export default {
     // "planet-list": PlanetList
     carousel: Carousel,
     quiz: Quiz,
+    "planets": PlanetsGrid,
+    "planets-grid": PlanetsGrid,
+    "planet-detail": PlanetDetail,
+    "favourite-list": FavouriteList,
     footersm: Footersm,
     NewsList: NewsList,
 
@@ -134,7 +148,6 @@ export default {
         this.bodies = bodies.bodies
         this.planets = this.getPlanets(bodies.bodies)
         this.sortedByDistanceFromSun()
-      
       })
       
 
@@ -156,6 +169,10 @@ export default {
         this.favouriteItems.push(item);
       }
     });
+
+    eventBus.$on("planet-selected", (planet) => {
+      this.selectedPlanet = planet
+    })
   },
   computed: {
     randomImage() {
@@ -166,9 +183,6 @@ export default {
     }
   },
   methods: {
-    // getList: function(category) {
-    //   this.selectedCategory = category
-    // }
       getPlanets: function(bodies) {
       const result = bodies.filter(body => {return body.isPlanet == true && body.meanRadius>1188}) 
       return result
@@ -180,7 +194,8 @@ export default {
         return 0;
       }
       return this.planets.sort(compare)
-    }
+    },
+
 
   }
 };

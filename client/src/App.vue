@@ -86,25 +86,16 @@ import ItemDetail from "@/components/ItemDetail.vue";
 <<<<<<< HEAD
 import PlanetsGrid from "@/components/PlanetsGrid.vue";
 import PlanetDetail from "@/components/PlanetDetail.vue";
-=======
-
-import PlanetsGrid from "@/components/PlanetsGrid.vue";
-
->>>>>>> main
 // import PlanetList from "@/components/PlanetList.vue";
 import FavouriteService from "@/services/FavouriteService.js";
 import Carousel from "@/components/Carousel.vue";
 import Quiz from "@/components/Quiz.vue";
-<<<<<<< HEAD
-import FavouriteList from "@/components/FavouriteList.vue";
-=======
 
 import FavouriteList from "@/components/FavouriteList.vue";
 
 import SignUpForm from "@/components/SignUpForm.vue";
 import Footersm from "@/components/Footersm.vue";
 
->>>>>>> main
 
 export default {
   name: "App",
@@ -113,19 +104,11 @@ export default {
       bodies: [],
       planets: [],
       imgUrls: [],
-<<<<<<< HEAD
-=======
-
->>>>>>> main
       imgUrl: "",
       favouriteItems: [],
       item: null,
       selectedPlanet: null,
       selectedCategory: null
-<<<<<<< HEAD
-=======
-
->>>>>>> main
     };
   },
   components: {
@@ -134,12 +117,10 @@ export default {
     // "planet-list": PlanetList
     carousel: Carousel,
     quiz: Quiz,
-<<<<<<< HEAD
     "planets": PlanetsGrid,
     "planets-grid": PlanetsGrid,
     "planet-detail": PlanetDetail,
     "favourite-list": FavouriteList,
-=======
     footersm: Footersm,
 
     "planets": PlanetsGrid,
@@ -149,7 +130,6 @@ export default {
 
     "signup-form": SignUpForm,
 
->>>>>>> main
   },
   mounted() {
     fetch("http://api.le-systeme-solaire.net/rest/bodies/")

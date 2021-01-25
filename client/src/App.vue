@@ -290,4 +290,7 @@ button:active {
 li {
   list-style: none;
 }
+.favourite-list {
+  margin-left: 40px;
+}
 </style>

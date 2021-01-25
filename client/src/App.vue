@@ -69,19 +69,13 @@
 <script>
 import ItemDropdown from "@/components/ItemDropdown.vue";
 import ItemDetail from "@/components/ItemDetail.vue";
-<<<<<<< HEAD
 import PlanetsGrid from "@/components/PlanetsGrid.vue";
-=======
->>>>>>> main
 // import PlanetList from "@/components/PlanetList.vue";
 import { eventBus } from "./main.js";
 import FavouriteService from "@/services/FavouriteService.js";
 import Carousel from "@/components/Carousel.vue";
 import Quiz from "@/components/Quiz.vue";
-<<<<<<< HEAD
-=======
 import FavouriteList from "@/components/FavouriteList.vue";
->>>>>>> main
 
 export default {
   name: "App",
@@ -90,13 +84,10 @@ export default {
       bodies: [],
       planets: [],
       imgUrls: [],
-<<<<<<< HEAD
       imgUrl: "",
       favouriteItems: [],
       item: null,
       selectedCategory: null
-=======
->>>>>>> main
     };
   },
   components: {
@@ -105,12 +96,9 @@ export default {
     // "planet-list": PlanetList
     carousel: Carousel,
     quiz: Quiz,
-<<<<<<< HEAD
     "planets": PlanetsGrid,
-    "planets-grid": PlanetsGrid
-=======
+    "planets-grid": PlanetsGrid,
     "favourite-list": FavouriteList,
->>>>>>> main
   },
   mounted() {
     fetch("http://api.le-systeme-solaire.net/rest/bodies/")

@@ -38,6 +38,7 @@
   </div>
 </template>
 <script>
+import MailingService from "@/services/MailingService.js";
 export default {
   data() {
     return {
@@ -54,6 +55,9 @@ export default {
         email: this.email,
       };
       MailingService.saveDetails(details);
+      this.first = "";
+      this.last = "";
+      this.email = "";
     },
   },
 };

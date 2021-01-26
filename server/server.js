@@ -17,7 +17,7 @@ MongoClient.connect('mongodb://localhost:27017')
     const favouritesRouter = createRouter(favouritesCollection);
     const mailingRouter = createRouter(mailingListCollection);  
     app.use('/api/favourites', favouritesRouter);
-    app.use('api/mailinglist', mailingRouter);
+    app.use('/api/mailinglist', mailingRouter);
   })
   .catch(console.err);
 

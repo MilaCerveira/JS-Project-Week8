@@ -58,6 +58,7 @@
   
 <div class='quiz-title'> <h2> Quiz Time </h2> </div>
 <quiz></quiz>
+<NewsList />
 
 <div class='label-container'>
   
@@ -82,7 +83,12 @@
 import { eventBus } from "./main.js";
 import ItemDropdown from "@/components/ItemDropdown.vue";
 import ItemDetail from "@/components/ItemDetail.vue";
+
 import PlanetsGrid from "@/components/PlanetsGrid.vue";
+
+import NewsList from "@/components/NewsList";
+
+// import PlanetList from "@/components/PlanetList.vue";
 import FavouriteService from "@/services/FavouriteService.js";
 import Carousel from "@/components/Carousel.vue";
 import Quiz from "@/components/Quiz.vue";
@@ -101,12 +107,14 @@ export default {
       planets: [],
       imgUrls: [],
 
+      NewsList: NewsList,
+
+
       imgUrl: "",
       favouriteItems: [],
       item: null,
       selectedPlanet: null,
       selectedCategory: null
-
     };
   },
   components: {
@@ -118,6 +126,13 @@ export default {
     "planets-grid": PlanetsGrid,
     "favourite-list": FavouriteList,
     footersm: Footersm,
+    NewsList: NewsList,
+
+    "planets": PlanetsGrid,
+    "planets-grid": PlanetsGrid,
+
+    "favourite-list": FavouriteList,
+
     "signup-form": SignUpForm,
 
   },
@@ -186,6 +201,7 @@ export default {
 body {
   font-size: 14px;
   font-family: "Montserrat", sans-serif;
+  margin-left: 40px;
 }
 * {
   box-sizing: border-box;
@@ -252,6 +268,7 @@ nav ul li a:hover {
 }
 .quote-container {
   text-align: center;
+  
 }
 .top {
   animation: fadeIn 4s forwards;
@@ -275,8 +292,8 @@ button {
   color: white;
   background: #6f58c9;
   border: 2px solid #6f58c9;
-  font-size: 17px;
-  padding: 7px 12px;
+  font-size: 12px;
+  padding: 5px 5px;
   font-weight: normal;
   margin: 4px 0;
   margin-right: 12px;
@@ -292,11 +309,9 @@ button:active {
   background: #7e78d2;
 }
 .bodies-container {
-  margin-left: 40px;
   margin-top: 40px;
 }
 .label-container {
-  margin-left: 40px;
   margin-top: 20px;
   margin-bottom: 20px;
 }
@@ -305,7 +320,6 @@ button:active {
   margin-bottom: 20px;
 }
 .quiz-title {
-  margin-left: 40px;
   margin-top: 20px;
   margin-bottom: 20px;
   text-transform: uppercase;
@@ -323,7 +337,6 @@ button:active {
   margin-left: -0.1em;
 }
 .images-title {
-  margin-left: 40px;
   margin-top: 20px;
   margin-bottom: 20px;
   text-transform: uppercase;
@@ -344,7 +357,6 @@ li {
   list-style: none;
 }
 .favourite-list {
-  margin-left: 40px;
   text-transform: uppercase;
   position: relative;
 }

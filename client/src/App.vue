@@ -26,8 +26,13 @@
       </li>
       </li>
       <li>
+<<<<<<< HEAD
         <a  href='#' id="scrollTo" v-scroll-to="{element: '#allPlanets'}">
           All planets
+=======
+        <a class='active' href='#' id="scrollTo" v-scroll-to="{element: '#allPlanets'}">
+          Planets
+>>>>>>> 4ce72eeb3e6c079330500ea5ddc863794110a684
         </a>
       </li>
       <li>
@@ -49,7 +54,7 @@
 <carousel></carousel>
 
 <div class='bodies-container'>
-  <item-dropdown :bodies="bodies"> </item-dropdown>
+  <span class="dropDownBlock">Browse all celestial bodies:<item-dropdown class="dropDown" :bodies="bodies"> </item-dropdown></span>
   <sun-item id="sun" :sun="sun"></sun-item>
   <planets-grid id="allPlanets" :planets="planets"></planets-grid>
   <item-detail :items="item"></item-detail>
@@ -222,6 +227,12 @@ body {
 }
 a {
   text-decoration: none;
+}
+.dropDownBlock {
+  display: flex;
+}
+.dropDown {
+  padding: 4px
 }
 .Img > div {
   width: 100%;

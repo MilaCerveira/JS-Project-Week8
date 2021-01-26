@@ -26,14 +26,11 @@
       </li>
       </li>
       <li>
-<<<<<<< HEAD
+
         <a  href='#' id="scrollTo" v-scroll-to="{element: '#allPlanets'}">
           All planets
-=======
-        <a class='active' href='#' id="scrollTo" v-scroll-to="{element: '#allPlanets'}">
-          Planets
->>>>>>> 4ce72eeb3e6c079330500ea5ddc863794110a684
-        </a>
+</a>
+        
       </li>
       <li>
         <a  href='#' id="scrollTo" v-scroll-to="{element: '.quiz-title'}">Quiz</a>

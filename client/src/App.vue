@@ -54,6 +54,8 @@
   <planets-grid id="allPlanets" :planets="planets"></planets-grid>
   <item-detail :items="item"></item-detail>
 </div>
+<scroll-to-top></scroll-to-top>
+
       <!-- <h2> NASA's image of the day </h2>
   <img id='randomImg' :src="imgUrl"></img> -->
   
@@ -95,6 +97,7 @@ import ItemDropdown from "@/components/ItemDropdown.vue";
 import ItemDetail from "@/components/ItemDetail.vue";
 import PlanetsGrid from "@/components/PlanetsGrid.vue";
 import SunItem from "@/components/SunItem.vue";
+import ScrollToTop from "@/components/ScrollToTop.vue"
 
 import NewsList from "@/components/NewsList";
 
@@ -128,6 +131,7 @@ export default {
   components: {
     "item-detail": ItemDetail,
     "item-dropdown": ItemDropdown,
+    "scroll-to-top": ScrollToTop,
     carousel: Carousel,
     quiz: Quiz,
     planets: PlanetsGrid,
@@ -397,4 +401,5 @@ li {
   z-index: -1;
   margin-left: -0.1em;
 }
+
 </style>

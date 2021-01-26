@@ -26,7 +26,9 @@
       </li>
       </li>
       <li>
-        <!-- <a v-on:click="getList(planets)">Planets</a> -->
+        <a id="scrollTo" v-scroll-to="{element: '#allPlanets'}">
+          All planets
+        </a>
       </li>
       <li>
         <a href='#'>Quiz</a>
@@ -45,9 +47,8 @@
 
 <div class='bodies-container'>
   <item-dropdown :bodies="bodies"> </item-dropdown>
+  <planets-grid id="allPlanets" :planets="planets"></planets-grid>
   <item-detail :items="item"></item-detail>
-  <planets-grid :planets="planets"></planets-grid>
-  <planet-detail :planet="selectedPlanet"></planet-detail>
 </div>
       <!-- <h2> NASA's image of the day </h2>
   <img id='randomImg' :src="imgUrl"></img> -->
@@ -84,14 +85,14 @@
 
 <script>
 import { eventBus } from "./main.js";
+
+import VueScrollTo from "./main.js"
 import ItemDropdown from "@/components/ItemDropdown.vue";
 import ItemDetail from "@/components/ItemDetail.vue";
 
 import PlanetsGrid from "@/components/PlanetsGrid.vue";
 
 import NewsList from "@/components/NewsList";
-
-import PlanetDetail from "@/components/PlanetDetail.vue";
 
 // import PlanetList from "@/components/PlanetList.vue";
 import FavouriteService from "@/services/FavouriteService.js";
@@ -116,28 +117,19 @@ export default {
       componentKey: 0,
       imgUrl: "",
       favouriteItems: [],
-      item: null,
-      selectedPlanet: null,
-      selectedCategory: null,
+      item: null
     };
   },
   components: {
     "item-detail": ItemDetail,
     "item-dropdown": ItemDropdown,
-    // "planet-list": PlanetList
     carousel: Carousel,
     quiz: Quiz,
     planets: PlanetsGrid,
     "planets-grid": PlanetsGrid,
-    "planet-detail": PlanetDetail,
     "favourite-list": FavouriteList,
     footersm: Footersm,
     NewsList: NewsList,
-
-    planets: PlanetsGrid,
-    "planets-grid": PlanetsGrid,
-
-    "favourite-list": FavouriteList,
 
     "signup-form": SignUpForm,
   },
@@ -169,9 +161,11 @@ export default {
       }
     });
 
-    eventBus.$on("planet-selected", (planet) => {
-      this.selectedPlanet = planet;
-    });
+
+    eventBus.$on("selected-item", (item) => {
+      this.selectedItem = item
+    })
+
   },
   computed: {
     randomImage() {
@@ -204,6 +198,7 @@ export default {
 </script>
 
 <style>
+
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,100&display=swap");
 body {
   font-size: 14px;

@@ -22,25 +22,25 @@
       <li>
         <a class='active' href='#'>Home</a>
       <li>
-        <a class='active' href='#' id="scrollTo" v-scroll-to="{element: '#sun'}">Sun</a>
+        <a  href='#' id="scrollTo" v-scroll-to="{element: '#sun'}">Sun</a>
       </li>
       </li>
       <li>
-        <a class='active' href='#' id="scrollTo" v-scroll-to="{element: '#allPlanets'}">
+        <a  href='#' id="scrollTo" v-scroll-to="{element: '#allPlanets'}">
           All planets
         </a>
       </li>
       <li>
-        <a class='active' href='#' id="scrollTo" v-scroll-to="{element: '.quiz-title'}">Quiz</a>
+        <a  href='#' id="scrollTo" v-scroll-to="{element: '.quiz-title'}">Quiz</a>
       </li>
       <li>
-        <a class='active' href='#' id="scrollTo" v-scroll-to="{element: '#news'}">News</a>
+        <a  href='#' id="scrollTo" v-scroll-to="{element: '#news'}">News</a>
       </li>
       <li>
-        <a class='active' href='#' id="scrollTo" v-scroll-to="{element: '.label-container'}">Gallery</a>
+        <a  href='#' id="scrollTo" v-scroll-to="{element: '.label-container'}">Gallery</a>
       </li>
       <li>
-        <a class='active' href='#' id="scrollTo" v-scroll-to="{element: '#signUp'}">Signup</a>
+        <a  href='#' id="scrollTo" v-scroll-to="{element: '#signUp'}">Signup</a>
       </li>
     </ul>
   </nav>
@@ -266,12 +266,12 @@ nav ul li {
   margin-right: 35px;
 }
 nav ul li a {
-  font-weight: 800;
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.2em;
   color: rgba(255, 255, 255, 0.308);
   display: block;
+  font-weight: bold;
 }
 nav ul li a.active {
   box-shadow: 0px -1px 0px #fff;

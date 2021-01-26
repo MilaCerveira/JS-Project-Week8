@@ -26,18 +26,21 @@
       </li>
       </li>
       <li>
-        <a id="scrollTo" v-scroll-to="{element: '#allPlanets'}">
+        <a class='active' href='#' id="scrollTo" v-scroll-to="{element: '#allPlanets'}">
           All planets
         </a>
       </li>
       <li>
-        <a href='#'>Quiz</a>
+        <a class='active' href='#' id="scrollTo" v-scroll-to="{element: '.quiz-title'}">Quiz</a>
       </li>
       <li>
-        <a href='#'>Gallery</a>
+        <a class='active' href='#' id="scrollTo" v-scroll-to="{element: '#news'}">News</a>
       </li>
       <li>
-        <a href='#'>Signup</a>
+        <a class='active' href='#' id="scrollTo" v-scroll-to="{element: '.label-container'}">Gallery</a>
+      </li>
+      <li>
+        <a class='active' href='#' id="scrollTo" v-scroll-to="{element: '#signUp'}">Signup</a>
       </li>
     </ul>
   </nav>
@@ -63,7 +66,7 @@
 <quiz :key="componentKey"></quiz>
 <button id="refresh-quiz" v-on:click="refreshQuiz">Refresh Quiz</button>
 
-<NewsList />
+<NewsList id="news"/>
 
 <div class='label-container'>
   
@@ -78,7 +81,7 @@
 <div class= 'signup-form'>
 <h2> Join our mailing list </h2>
 </div>
-<signup-form></signup-form>
+<signup-form id="signUp"></signup-form>
 <footersm> </footersm>
 
 </div>

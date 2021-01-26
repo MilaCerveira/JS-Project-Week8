@@ -10,6 +10,7 @@
   <planets-grid id="allPlanets" :planets="planets"></planets-grid>
   <dwarf-planets-grid id="allDwarfPlanets" :dwarfPlanets="dwarfPlanets"></dwarf-planets-grid>
   <asteroids-grid id="allAsteroids" :asteroids="asteroids"></asteroids-grid>
+  <comets-grid id="allComets" :comets="comets"></comets-grid>
 </div>
 <scroll-to-top></scroll-to-top>
 
@@ -56,6 +57,7 @@ import SunItem from "@/components/SunItem.vue";
 import PlanetsGrid from "@/components/PlanetsGrid.vue";
 import DwarfPlanetsGrid from "@/components/DwarfPlanetsGrid";
 import AsteroidsGrid from "@/components/AsteroidsGrid.vue";
+import CometsGrid from "@/components/CometsGrid.vue";
 import ScrollToTop from "@/components/ScrollToTop.vue";
 import NavBar from "@/components/NavBar.vue";
 
@@ -79,6 +81,7 @@ export default {
       planets: [],
       dwarfPlanets: [],
       asteroids: [],
+      comets: [],
       sun: {},
       imgUrls: [],
 
@@ -102,6 +105,7 @@ export default {
     "planets-grid": PlanetsGrid,
     "dwarf-planets-grid": DwarfPlanetsGrid,
     "asteroids-grid": AsteroidsGrid,
+    "comets-grid": CometsGrid,
     "favourite-list": FavouriteList,
     footersm: Footersm,
     NewsList: NewsList,
@@ -118,6 +122,7 @@ export default {
         this.sun = this.getSun(bodies.bodies);
         this.dwarfPlanets = this.getDwarfPlanets(bodies.bodies);
         this.asteroids = this.getAsteroids(bodies.bodies);
+        this.comets = this.getComets(bodies.bodies);
       });
 
     fetch(
@@ -174,6 +179,12 @@ export default {
     getAsteroids: function (bodies) {
       let result = bodies.filter((body) => {
         return (!body.isPlanet && !body.moons && !body.aroundPlanet && body.meanRadius < 600000);
+      });
+      return result
+    },
+    getComets: function (bodies) {
+      let result = bodies.filter((body) => {
+        return (!body.isPlanet && !body.moons && !body.aroundPlanet && body.meanRadius < 600000 && body.density < 1.1);
       });
       return result
     },

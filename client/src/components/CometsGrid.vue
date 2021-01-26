@@ -1,11 +1,11 @@
 <template>
-  <div class="asteroids">
-    <section class="asteroidHeading">
-      <h2>ASTEROIDS</h2>
-      <img class="categoryImg" src="@/assets/Asteroid.png"/>
+  <div class="comets">
+    <section class="cometHeading">
+      <h2>cometS</h2>
+      <img class="categoryImg" src="@/assets/Comet.png"/>
     </section>
-    <div class="asteroidsGrid">
-      <ul class="asteroid" v-for="(item, index) in asteroids" :item="item" :key="index">
+    <div class="cometsGrid">
+      <ul class="comet" v-for="(item, index) in comets" :item="item" :key="index">
         <li>{{item.englishName}}</li>
       </ul>
     </div>
@@ -14,27 +14,27 @@
 
 <script>
 export default {
-  name: "asteroids-grid",
-  props: ["asteroids"]
+  name: "comets-grid",
+  props: ["comets"]
 }
 </script>
 
 <style>
-div.asteroidsGrid {
+div.cometsGrid {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 
 }
 
-div.asteroids {
+div.comets {
   width: 600px;
 }
 h2{
   font-family: "Montserrat", sans-serif;
   text-transform: uppercase;
 }
-.asteroid {
+.comet {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -47,7 +47,7 @@ h2{
   padding: 10px;
 }
 
-.asteroidHeading {
+.cometHeading {
   display: flex;
   align-items: center;
 }

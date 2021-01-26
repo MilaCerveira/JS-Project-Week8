@@ -1,9 +1,8 @@
 <template lang="html">
   <div id="itemDetail" v-if="item">
-    <p><span></span>{{item.englishName}}</p>
-    <p><span></span></p>
+    <h2 v-model="name">{{item.englishName}}</h2>
       <p v-if="item.englishName == 'Sun'">Type: Star</p>
-      <p v-if="item.isPlanet && item.meanRadius > 1188">Type: item</p>
+      <p v-if="item.isPlanet && item.meanRadius > 1188">Type: Planet</p>
       <p v-if="item.isPlanet && item.meanRadius > 1188 && item.density >= 3">Type of planet: Rocky</p>
       <p v-if="item.isPlanet && item.meanRadius > 1188 && item.density < 3">Type of planet: Gaseous</p>
       <p v-if="item.isPlanet && item.meanRadius < 1188">Type: Dwarf item</p>
@@ -27,6 +26,9 @@
           </ul>
         </div>
       </div>
+      <form v-on:submit.prevent="saveItem">
+        <input type="submit" method="post" value="Add to Favourites" />
+      </form>
 
   </div>
 </template>
@@ -62,12 +64,9 @@ export default {
 
 <style>
 
-#planetDetail {
-  border: 1px black solid;
-}
-
-p {
+#itemDetail {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-content: center;
 

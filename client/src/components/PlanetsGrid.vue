@@ -29,10 +29,6 @@ div.planetsGrid {
   max-width: 600px;
 }
 
-li {
-    width: 150px;
-}
-
 div.planets {
   width: 600px;
 }

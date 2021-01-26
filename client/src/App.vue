@@ -5,9 +5,10 @@
 
 <div class='bodies-container'>
   <span class="dropDownBlock">Browse all celestial bodies:<item-dropdown class="dropDown" :bodies="bodies"> </item-dropdown></span>
+  <item-detail :items="item"></item-detail>
   <sun-item id="sun" :sun="sun"></sun-item>
   <planets-grid id="allPlanets" :planets="planets"></planets-grid>
-  <item-detail :items="item"></item-detail>
+  <dwarf-planets-grid id="allDwarfPlanets" :dwarfPlanets="dwarfPlanets"></dwarf-planets-grid>
 </div>
 <scroll-to-top></scroll-to-top>
 
@@ -50,8 +51,9 @@ import { eventBus } from "./main.js";
 import VueScrollTo from "./main.js";
 import ItemDropdown from "@/components/ItemDropdown.vue";
 import ItemDetail from "@/components/ItemDetail.vue";
-import PlanetsGrid from "@/components/PlanetsGrid.vue";
 import SunItem from "@/components/SunItem.vue";
+import PlanetsGrid from "@/components/PlanetsGrid.vue";
+import DwarfPlanetsGrid from "@/components/DwarfPlanetsGrid";
 import ScrollToTop from "@/components/ScrollToTop.vue";
 import NavBar from "@/components/NavBar.vue";
 
@@ -73,6 +75,7 @@ export default {
     return {
       bodies: [],
       planets: [],
+      dwarfPlanets: [],
       sun: {},
       imgUrls: [],
 
@@ -92,8 +95,9 @@ export default {
     carousel: Carousel,
     quiz: Quiz,
     planets: PlanetsGrid,
-    "planets-grid": PlanetsGrid,
     "sun-item": SunItem,
+    "planets-grid": PlanetsGrid,
+    "dwarf-planets-grid": DwarfPlanetsGrid,
     "favourite-list": FavouriteList,
     footersm: Footersm,
     NewsList: NewsList,
@@ -108,6 +112,7 @@ export default {
         this.planets = this.getPlanets(bodies.bodies);
         this.sortedByDistanceFromSun();
         this.sun = this.getSun(bodies.bodies);
+        this.dwarfPlanets = this.getDwarfPlanets(bodies.bodies);
       });
 
     fetch(
@@ -155,6 +160,13 @@ export default {
       let result = bodies.find((body) => body.englishName == "Sun");
       return result;
     },
+    getDwarfPlanets: function (bodies) {
+      const result = bodies.filter((body) => {
+        return body.isPlanet == true && body.meanRadius < 1188;
+      });
+      return result;
+    },
+
     sortedByDistanceFromSun: function () {
       function compare(a, b) {
         if (a.semimajorAxis < b.semimajorAxis) return -1;

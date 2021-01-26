@@ -22,7 +22,7 @@
       <li>
         <a class='active' href='#'>Home</a>
       <li>
-        <a class='active' href='#'>Sun</a>
+        <a class='active' href='#' id="scrollTo" v-scroll-to="{element: '#sun'}">Sun</a>
       </li>
       </li>
       <li>
@@ -47,7 +47,7 @@
 
 <div class='bodies-container'>
   <item-dropdown :bodies="bodies"> </item-dropdown>
-  <sun-item :sun="sun"></sun-item>
+  <sun-item id="sun" :sun="sun"></sun-item>
   <planets-grid id="allPlanets" :planets="planets"></planets-grid>
   <item-detail :items="item"></item-detail>
 </div>

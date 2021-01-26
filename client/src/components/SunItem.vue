@@ -7,7 +7,7 @@
     <ul>
       <li>Type: Star</li>
       <li>Density: {{sun.density}} g/cm3</li>
-      <li>Mean radius: {{sun.meanRadius}}km</li>
+      <li>Mean radius: {{sun.meanRadius}} km</li>
     </ul>
   </div>
 </template>

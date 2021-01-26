@@ -47,6 +47,7 @@
 
 <div class='bodies-container'>
   <item-dropdown :bodies="bodies"> </item-dropdown>
+  <sun-item :sun="sun"></sun-item>
   <planets-grid id="allPlanets" :planets="planets"></planets-grid>
   <item-detail :items="item"></item-detail>
 </div>
@@ -89,8 +90,8 @@ import { eventBus } from "./main.js";
 import VueScrollTo from "./main.js"
 import ItemDropdown from "@/components/ItemDropdown.vue";
 import ItemDetail from "@/components/ItemDetail.vue";
-
 import PlanetsGrid from "@/components/PlanetsGrid.vue";
+import SunItem from "@/components/SunItem.vue";
 
 import NewsList from "@/components/NewsList";
 
@@ -110,6 +111,7 @@ export default {
     return {
       bodies: [],
       planets: [],
+      sun: {},
       imgUrls: [],
 
       NewsList: NewsList,
@@ -127,6 +129,7 @@ export default {
     quiz: Quiz,
     planets: PlanetsGrid,
     "planets-grid": PlanetsGrid,
+    "sun-item": SunItem,
     "favourite-list": FavouriteList,
     footersm: Footersm,
     NewsList: NewsList,
@@ -140,6 +143,8 @@ export default {
         this.bodies = bodies.bodies;
         this.planets = this.getPlanets(bodies.bodies);
         this.sortedByDistanceFromSun();
+        this.sun = this.getSun(bodies.bodies);
+        
       });
 
     fetch(
@@ -185,6 +190,10 @@ export default {
       });
       return result;
     },
+    getSun: function(bodies) {
+      let result = bodies.find((body => body.englishName == "Sun"))
+      return result
+      },
     sortedByDistanceFromSun: function () {
       function compare(a, b) {
         if (a.semimajorAxis < b.semimajorAxis) return -1;

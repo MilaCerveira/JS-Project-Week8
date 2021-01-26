@@ -1,5 +1,5 @@
 <template lang="html">
-  <ul v-on:click="displayInfo">
+  <ul class="planet" v-on:click="displayInfo">
     <img class="icon" v-if="item.englishName == 'Mercury'" src="@/assets/Planets/Mercury.png" />
     <img class="icon" v-if="item.englishName == 'Venus'" src="@/assets/Planets/Venus.png" />
     <img class="icon" v-if="item.englishName == 'Earth'" src="@/assets/Planets/Earth.png" />
@@ -29,21 +29,16 @@ export default {
 </script>
 
 <style>
-.icon {
-  width: 30px;
-}
 
-
-   /* ul {
-  display: flex;
-  align-items: center;
-  padding: 5px;
-  width: 150px; 
-}      */
 .icon {
 width: 50px;
 height: 50px;
 padding: 3px;
 }
 
+.planet {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 </style>

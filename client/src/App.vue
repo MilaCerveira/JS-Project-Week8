@@ -26,11 +26,16 @@
       </li>
       </li>
       <li>
-
-        <a  href='#' id="scrollTo" v-scroll-to="{element: '#allPlanets'}">
-          All planets
-</a>
-        
+        <a href='#' id="scrollTo" v-scroll-to="{element: '#allPlanets'}">Planets</a>
+      </li>
+      <li>
+        <a href='#' id="scrollTo" v-scroll-to="{element: '#allDwarfPlanets'}">Dwarf Planets</a>
+      </li>
+      <li>
+        <a href='#' id="scrollTo" v-scroll-to="{element: '#allAsteroidss'}">Asteroids</a>
+      </li>
+      <li>
+        <a href='#' id="scrollTo" v-scroll-to="{element: '#allComets'}">Comets</a>
       </li>
       <li>
         <a  href='#' id="scrollTo" v-scroll-to="{element: '.quiz-title'}">Quiz</a>
@@ -51,9 +56,9 @@
 <carousel></carousel>
 
 <div class='bodies-container'>
+  <span class="dropDownBlock">Browse all celestial bodies:<item-dropdown class="dropDown" :bodies="bodies"> </item-dropdown></span>
   <sun-item id="sun" :sun="sun"></sun-item>
   <planets-grid id="allPlanets" :planets="planets"></planets-grid>
-  <span class="dropDownBlock">Browse all celestial bodies:<item-dropdown class="dropDown" :bodies="bodies"> </item-dropdown></span>
   <item-detail :items="item"></item-detail>
 </div>
 <scroll-to-top></scroll-to-top>

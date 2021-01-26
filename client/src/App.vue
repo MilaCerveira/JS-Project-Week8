@@ -22,20 +22,27 @@
       <li>
         <a class='active' href='#'>Home</a>
       <li>
-        <a class='active' href='#'>Sun</a>
+        <a  href='#' id="scrollTo" v-scroll-to="{element: '#sun'}">Sun</a>
       </li>
       </li>
       <li>
-        <!-- <a v-on:click="getList(planets)">Planets</a> -->
+
+        <a  href='#' id="scrollTo" v-scroll-to="{element: '#allPlanets'}">
+          All planets
+</a>
+        
       </li>
       <li>
-        <a href='#'>Quiz</a>
+        <a  href='#' id="scrollTo" v-scroll-to="{element: '.quiz-title'}">Quiz</a>
       </li>
       <li>
-        <a href='#'>Gallery</a>
+        <a  href='#' id="scrollTo" v-scroll-to="{element: '#news'}">News</a>
       </li>
       <li>
-        <a href='#'>Signup</a>
+        <a  href='#' id="scrollTo" v-scroll-to="{element: '.label-container'}">Gallery</a>
+      </li>
+      <li>
+        <a  href='#' id="scrollTo" v-scroll-to="{element: '#signUp'}">Signup</a>
       </li>
     </ul>
   </nav>
@@ -44,10 +51,10 @@
 <carousel></carousel>
 
 <div class='bodies-container'>
-  <item-dropdown :bodies="bodies"> </item-dropdown>
+  <span class="dropDownBlock">Browse all celestial bodies:<item-dropdown class="dropDown" :bodies="bodies"> </item-dropdown></span>
+  <sun-item id="sun" :sun="sun"></sun-item>
+  <planets-grid id="allPlanets" :planets="planets"></planets-grid>
   <item-detail :items="item"></item-detail>
-  <planets-grid :planets="planets"></planets-grid>
-  <planet-detail :planet="selectedPlanet"></planet-detail>
 </div>
       <!-- <h2> NASA's image of the day </h2>
   <img id='randomImg' :src="imgUrl"></img> -->
@@ -61,7 +68,7 @@
 <quiz :key="componentKey"></quiz>
 <button id="refresh-quiz" v-on:click="refreshQuiz">Refresh Quiz</button>
 
-<NewsList />
+<NewsList id="news"/>
 
 <div class='label-container'>
   
@@ -76,7 +83,7 @@
 <div class= 'signup-form'>
 <h2> Join our mailing list </h2>
 </div>
-<signup-form></signup-form>
+<signup-form id="signUp"></signup-form>
 <footersm> </footersm>
 
 </div>
@@ -84,14 +91,14 @@
 
 <script>
 import { eventBus } from "./main.js";
+
+import VueScrollTo from "./main.js"
 import ItemDropdown from "@/components/ItemDropdown.vue";
 import ItemDetail from "@/components/ItemDetail.vue";
-
 import PlanetsGrid from "@/components/PlanetsGrid.vue";
+import SunItem from "@/components/SunItem.vue";
 
 import NewsList from "@/components/NewsList";
-
-import PlanetDetail from "@/components/PlanetDetail.vue";
 
 // import PlanetList from "@/components/PlanetList.vue";
 import FavouriteService from "@/services/FavouriteService.js";
@@ -109,6 +116,7 @@ export default {
     return {
       bodies: [],
       planets: [],
+      sun: {},
       imgUrls: [],
 
       NewsList: NewsList,
@@ -116,28 +124,20 @@ export default {
       componentKey: 0,
       imgUrl: "",
       favouriteItems: [],
-      item: null,
-      selectedPlanet: null,
-      selectedCategory: null,
+      item: null
     };
   },
   components: {
     "item-detail": ItemDetail,
     "item-dropdown": ItemDropdown,
-    // "planet-list": PlanetList
     carousel: Carousel,
     quiz: Quiz,
     planets: PlanetsGrid,
     "planets-grid": PlanetsGrid,
-    "planet-detail": PlanetDetail,
+    "sun-item": SunItem,
     "favourite-list": FavouriteList,
     footersm: Footersm,
     NewsList: NewsList,
-
-    planets: PlanetsGrid,
-    "planets-grid": PlanetsGrid,
-
-    "favourite-list": FavouriteList,
 
     "signup-form": SignUpForm,
   },
@@ -148,6 +148,8 @@ export default {
         this.bodies = bodies.bodies;
         this.planets = this.getPlanets(bodies.bodies);
         this.sortedByDistanceFromSun();
+        this.sun = this.getSun(bodies.bodies);
+        
       });
 
     fetch(
@@ -169,9 +171,11 @@ export default {
       }
     });
 
-    eventBus.$on("planet-selected", (planet) => {
-      this.selectedPlanet = planet;
-    });
+
+    eventBus.$on("selected-item", (item) => {
+      this.selectedItem = item
+    })
+
   },
   computed: {
     randomImage() {
@@ -191,6 +195,10 @@ export default {
       });
       return result;
     },
+    getSun: function(bodies) {
+      let result = bodies.find((body => body.englishName == "Sun"))
+      return result
+      },
     sortedByDistanceFromSun: function () {
       function compare(a, b) {
         if (a.semimajorAxis < b.semimajorAxis) return -1;
@@ -204,6 +212,7 @@ export default {
 </script>
 
 <style>
+
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,100&display=swap");
 body {
   font-size: 14px;
@@ -215,6 +224,12 @@ body {
 }
 a {
   text-decoration: none;
+}
+.dropDownBlock {
+  display: flex;
+}
+.dropDown {
+  padding: 4px
 }
 .Img > div {
   width: 100%;
@@ -259,12 +274,12 @@ nav ul li {
   margin-right: 35px;
 }
 nav ul li a {
-  font-weight: 800;
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.2em;
   color: rgba(255, 255, 255, 0.308);
   display: block;
+  font-weight: bold;
 }
 nav ul li a.active {
   box-shadow: 0px -1px 0px #fff;

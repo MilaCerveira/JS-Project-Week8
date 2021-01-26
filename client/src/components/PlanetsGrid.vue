@@ -2,7 +2,7 @@
   <div class="planets">
     <h2>List of planets</h2>
     <div class="planetsGrid">
-      <planets-grid-item v-for="(planet, index) in planets" :planet="planet" :key="index"></planets-grid-item>
+      <planets-grid-item v-for="(item, index) in planets" :item="item" :key="index"></planets-grid-item>
       </div>
   </div>
 
@@ -29,8 +29,6 @@ div.planetsGrid {
   max-width: 600px;
 }
 
-
-
 li {
     width: 150px;
 }
@@ -42,6 +40,5 @@ h2{
   font-family: "Montserrat", sans-serif;
   text-transform: uppercase;
 }
-
 
 </style>

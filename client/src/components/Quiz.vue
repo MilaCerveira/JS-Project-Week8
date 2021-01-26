@@ -1,41 +1,58 @@
 <template lang="html">
-    <div>
+    <div v-if="quiz" class="form-container">
         <form @submit="handleSubmit">
-            <ul>
-                <li v-for="item in quiz">
-                    {{ item.category }}
-                    {{ item.question }}
-                    <div>
-                        True
-                        <input
-                            type="radio"
-                            value="True"
-                            v-model="answers[item.question]"
-                        />
-                        False
-                        <input
-                            type="radio"
-                            value="False"
-                            v-model="answers[item.question]"
-                        />
-                        <span v-if="result[item.question]">{{ result[item.question] }}</span>
-                    </div>
-                </li>
-            </ul>
-            <button type="submit" class="button">Submit</button>
+          <div>
+          <label for="Q1">{{quiz[0].question}}</label>
+          <input type="radio" :value="true" v-model="userAnswers.A1">True</input>
+          <input type="radio" :value="false" v-model="userAnswers.A1">False</input>
+</div>
+          <br>
+
+          <div>
+          <label for="Q1">{{quiz[1].question}}</label>
+          <input type="radio" :value="true" v-model="userAnswers.A2">True</input>
+          <input type="radio" :value="false" v-model="userAnswers.A2">False</input>
+          </div>
+<br>
+<div>
+          <label for="Q1">{{quiz[2].question}}</label>
+           <input type="radio" :value="true" v-model="userAnswers.A3">True</input>
+          <input type="radio" :value="false" v-model="userAnswers.A3">False</input>
+</div>
+<br>
+<div>
+          <label for="Q1">{{quiz[3].question}}</label>
+           <input type="radio" :value="true" v-model="userAnswers.A4">True</input>
+          <input type="radio" :value="false" v-model="userAnswers.A4">False</input>
+</div>
+<br>
+<div>
+          <label for="Q1">{{quiz[4].question}}</label>
+           <input type="radio" :value="true" v-model="userAnswers.A5">True</input>
+          <input type="radio" :value="false" v-model="userAnswers.A5">False</input>
+</div>
+<br>
+          <button type="submit" class="button">Submit</button>
         </form>
+        <h2 v-if="result">You Scored: {{result}}</h2>
+        <br>
+        
     </div>
 </template>
 <script>
 export default {
   data() {
     return {
-      result: {},
-      answers: {},
+      result: "",
+      userAnswers: {
+        A1: "",
+        A2: "",
+      },
       quiz: [],
       sound: null,
     };
   },
+  props: ["componentKey"],
   components: {},
   mounted() {
     fetch(
@@ -46,33 +63,42 @@ export default {
   },
   methods: {
     checkAnswers() {
-      const questions = Object.keys(this.answers);
-      console.log(questions);
-      questions.forEach((question) => {
-        const quiz = this.quiz.find((q) => q.question === question);
-
-        if (quiz) {
-          this.result[question] = quiz.correct_answer;
+      let quiz = this.quiz;
+      let givenAnswers = Object.values(this.userAnswers);
+      let toCheck = givenAnswers.map((item, index, givenAnswers) =>
+        givenAnswers[index].toString()
+      );
+      const toCheckAgainst = quiz.map((item, index, quiz) =>
+        quiz[index].correct_answer.toLowerCase()
+      );
+      let score = 0;
+      for (let i = 0; i < 5; i++) {
+        if (toCheck[i] === toCheckAgainst[i]) {
+          score += 1;
         }
-      });
+      }
+      return (this.result = `${score}/5`);
     },
+
     handleSubmit(event) {
       event.preventDefault();
-      const questions = Object.keys(this.answers);
-
-      if (questions.length < 5) {
-        return;
-      }
 
       this.checkAnswers();
-      console.log(this.answers);
     },
   },
-  computed: {},
 };
 </script>
-<style scoped>
+<style>
+.form-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
 ul {
   list-style-type: none;
+}
+
+.button {
+  margin-left: 40px;
 }
 </style>

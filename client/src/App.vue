@@ -59,7 +59,9 @@
   </div>
   
 <div class='quiz-title'> <h2> Quiz Time </h2> </div>
-<quiz></quiz>
+<quiz :key="componentKey"></quiz>
+<button id="refresh-quiz" v-on:click="refreshQuiz">Refresh Quiz</button>
+
 <NewsList />
 
 <div class='label-container'>
@@ -102,7 +104,6 @@ import FavouriteList from "@/components/FavouriteList.vue";
 import SignUpForm from "@/components/SignUpForm.vue";
 import Footersm from "@/components/Footersm.vue";
 
-
 export default {
   name: "App",
   data() {
@@ -113,10 +114,10 @@ export default {
 
       NewsList: NewsList,
 
-
+      componentKey: 0,
       imgUrl: "",
       favouriteItems: [],
-      item: null,
+      item: null
     };
   },
   components: {
@@ -124,24 +125,22 @@ export default {
     "item-dropdown": ItemDropdown,
     carousel: Carousel,
     quiz: Quiz,
-    "planets": PlanetsGrid,
+    planets: PlanetsGrid,
     "planets-grid": PlanetsGrid,
     "favourite-list": FavouriteList,
     footersm: Footersm,
     NewsList: NewsList,
 
     "signup-form": SignUpForm,
-
   },
   mounted() {
     fetch("http://api.le-systeme-solaire.net/rest/bodies/")
       .then((res) => res.json())
       .then((bodies) => {
-        this.bodies = bodies.bodies
-        this.planets = this.getPlanets(bodies.bodies)
-        this.sortedByDistanceFromSun()
-      })
-      
+        this.bodies = bodies.bodies;
+        this.planets = this.getPlanets(bodies.bodies);
+        this.sortedByDistanceFromSun();
+      });
 
     fetch(
       "https://api.nasa.gov/planetary/apod?api_key=FKGwNutpdJ2Irx3SQCknZlIKIwwVYRlY9WvheVfu&count=20"
@@ -162,9 +161,11 @@ export default {
       }
     });
 
+
     eventBus.$on("selected-item", (item) => {
       this.selectedItem = item
     })
+
   },
   computed: {
     randomImage() {
@@ -172,24 +173,27 @@ export default {
         Math.floor(Math.random() * this.imgUrl.length)
       ];
       this.imgUrl = randomImg.hdurl;
-    }
+    },
   },
   methods: {
-      getPlanets: function(bodies) {
-      const result = bodies.filter(body => {return body.isPlanet == true && body.meanRadius>1188}) 
-      return result
+    refreshQuiz() {
+      this.componentKey += 1;
+    },
+    getPlanets: function (bodies) {
+      const result = bodies.filter((body) => {
+        return body.isPlanet == true && body.meanRadius > 1188;
+      });
+      return result;
     },
     sortedByDistanceFromSun: function () {
-      function compare(a, b)  {
+      function compare(a, b) {
         if (a.semimajorAxis < b.semimajorAxis) return -1;
         if (a.semimajorAxis > b.semimajorAxis) return 1;
         return 0;
       }
-      return this.planets.sort(compare)
+      return this.planets.sort(compare);
     },
-
-
-  }
+  },
 };
 </script>
 
@@ -266,7 +270,6 @@ nav ul li a:hover {
 }
 .quote-container {
   text-align: center;
-  
 }
 .top {
   animation: fadeIn 4s forwards;
@@ -305,6 +308,9 @@ button:hover,
 button:active {
   color: #fff;
   background: #7e78d2;
+}
+button#refresh-quiz {
+  margin-left: 40px;
 }
 .bodies-container {
   margin-top: 40px;
@@ -373,5 +379,4 @@ li {
   z-index: -1;
   margin-left: -0.1em;
 }
-
 </style>

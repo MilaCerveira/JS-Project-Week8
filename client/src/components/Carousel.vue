@@ -41,7 +41,7 @@ export default {
                 },
                 {
                     text:'Jupiter',
-                    image: 'https://cdn.zmescience.com/wp-content/uploads/2020/09/io-jupiter-planet-astronomy-satellite-space-star-solar-system-space-wallpaper.jpg',
+                    image: 'https://www.astronomytrek.com/wp-content/uploads/2012/11/jupiter.png',
                 },
                   {
                     text:'Saturn',

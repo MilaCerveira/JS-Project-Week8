@@ -1,5 +1,6 @@
 <template lang="html">
   <div id="app">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <audio autoplay ref="audio" src="landing.wav"><source src="landing.wav"></audio>
       <div class='Img'>
   <div style="background-image: url('https://c4.wallpaperflare.com/wallpaper/166/977/136/cool-space-planet-floating-dark-light-wallpaper-preview.jpg')"></div>
@@ -20,9 +21,12 @@
     <ul>
       <li>
         <a class='active' href='#'>Home</a>
+      <li>
+        <a class='active' href='#'>Sun</a>
+      </li>
       </li>
       <li>
-        <a v-on:click="getList(planets)">Planets</a>
+        <!-- <a v-on:click="getList(planets)">Planets</a> -->
       </li>
       <li>
         <a href='#'>Quiz</a>
@@ -43,6 +47,7 @@
   <item-dropdown :bodies="bodies"> </item-dropdown>
   <item-detail :items="item"></item-detail>
   <planets-grid :planets="planets"></planets-grid>
+  <planet-detail :planet="selectedPlanet"></planet-detail>
 </div>
       <!-- <h2> NASA's image of the day </h2>
   <img id='randomImg' :src="imgUrl"></img> -->
@@ -54,6 +59,7 @@
   
 <div class='quiz-title'> <h2> Quiz Time </h2> </div>
 <quiz></quiz>
+<NewsList />
 
 <div class='label-container'>
   
@@ -65,21 +71,27 @@
 
 
 <img v-if="imgUrls" id='randomImg' :src="imgUrls[0].hdurl"></img>
+<div class= 'signup-form'>
 <h2> Join our mailing list </h2>
+</div>
 <signup-form></signup-form>
-
+<footersm> </footersm>
 
 </div>
 </template>
 
 <script>
+import { eventBus } from "./main.js";
 import ItemDropdown from "@/components/ItemDropdown.vue";
 import ItemDetail from "@/components/ItemDetail.vue";
 
 import PlanetsGrid from "@/components/PlanetsGrid.vue";
 
+import NewsList from "@/components/NewsList";
+
+import PlanetDetail from "@/components/PlanetDetail.vue";
+
 // import PlanetList from "@/components/PlanetList.vue";
-import { eventBus } from "./main.js";
 import FavouriteService from "@/services/FavouriteService.js";
 import Carousel from "@/components/Carousel.vue";
 import Quiz from "@/components/Quiz.vue";
@@ -87,6 +99,7 @@ import Quiz from "@/components/Quiz.vue";
 import FavouriteList from "@/components/FavouriteList.vue";
 
 import SignUpForm from "@/components/SignUpForm.vue";
+import Footersm from "@/components/Footersm.vue";
 
 
 export default {
@@ -97,11 +110,14 @@ export default {
       planets: [],
       imgUrls: [],
 
+      NewsList: NewsList,
+
+
       imgUrl: "",
       favouriteItems: [],
       item: null,
+      selectedPlanet: null,
       selectedCategory: null
-
     };
   },
   components: {
@@ -110,6 +126,12 @@ export default {
     // "planet-list": PlanetList
     carousel: Carousel,
     quiz: Quiz,
+    "planets": PlanetsGrid,
+    "planets-grid": PlanetsGrid,
+    "planet-detail": PlanetDetail,
+    "favourite-list": FavouriteList,
+    footersm: Footersm,
+    NewsList: NewsList,
 
     "planets": PlanetsGrid,
     "planets-grid": PlanetsGrid,
@@ -126,7 +148,6 @@ export default {
         this.bodies = bodies.bodies
         this.planets = this.getPlanets(bodies.bodies)
         this.sortedByDistanceFromSun()
-      
       })
       
 
@@ -148,6 +169,10 @@ export default {
         this.favouriteItems.push(item);
       }
     });
+
+    eventBus.$on("planet-selected", (planet) => {
+      this.selectedPlanet = planet
+    })
   },
   computed: {
     randomImage() {
@@ -158,9 +183,6 @@ export default {
     }
   },
   methods: {
-    // getList: function(category) {
-    //   this.selectedCategory = category
-    // }
       getPlanets: function(bodies) {
       const result = bodies.filter(body => {return body.isPlanet == true && body.meanRadius>1188}) 
       return result
@@ -172,7 +194,8 @@ export default {
         return 0;
       }
       return this.planets.sort(compare)
-    }
+    },
+
 
   }
 };
@@ -183,6 +206,7 @@ export default {
 body {
   font-size: 14px;
   font-family: "Montserrat", sans-serif;
+  margin-left: 40px;
 }
 * {
   box-sizing: border-box;
@@ -249,6 +273,7 @@ nav ul li a:hover {
 }
 .quote-container {
   text-align: center;
+  
 }
 .top {
   animation: fadeIn 4s forwards;
@@ -272,8 +297,8 @@ button {
   color: white;
   background: #6f58c9;
   border: 2px solid #6f58c9;
-  font-size: 17px;
-  padding: 7px 12px;
+  font-size: 12px;
+  padding: 5px 5px;
   font-weight: normal;
   margin: 4px 0;
   margin-right: 12px;
@@ -289,11 +314,9 @@ button:active {
   background: #7e78d2;
 }
 .bodies-container {
-  margin-left: 40px;
   margin-top: 40px;
 }
 .label-container {
-  margin-left: 40px;
   margin-top: 20px;
   margin-bottom: 20px;
 }
@@ -302,7 +325,6 @@ button:active {
   margin-bottom: 20px;
 }
 .quiz-title {
-  margin-left: 40px;
   margin-top: 20px;
   margin-bottom: 20px;
   text-transform: uppercase;
@@ -320,7 +342,6 @@ button:active {
   margin-left: -0.1em;
 }
 .images-title {
-  margin-left: 40px;
   margin-top: 20px;
   margin-bottom: 20px;
   text-transform: uppercase;
@@ -341,8 +362,23 @@ li {
   list-style: none;
 }
 .favourite-list {
-  margin-left: 40px;
   text-transform: uppercase;
   position: relative;
 }
+.signup-form {
+  text-align: center;
+  text-transform: uppercase;
+  position: relative;
+}
+.signup-form::before {
+  content: " ";
+  position: absolute;
+  width: 9em;
+  background: #00bfff;
+  height: 0.4em;
+  bottom: 0;
+  z-index: -1;
+  margin-left: -0.1em;
+}
+
 </style>

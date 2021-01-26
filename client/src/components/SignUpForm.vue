@@ -1,14 +1,18 @@
 <template>
     <div>
     <form id="signup-form">
-       <div class="form-item">
-        <label class="label">Name</label>
-        <input type="text" class="input" name="name" v-model="name">
-      </div>
-      <div class="form-item">
-        <label class="label">Email</label>
-        <input type="email" class="input" name="email" v-model="email">
-      </div>
+        <div class="form-item">
+          <label class="label"></label>
+             <input type="text" placeholder="First Name" class="input" first="first" v-model=first>
+        </div>
+    <div class="form-item">
+        <label class="label"></label>
+          <input type="text" placeholder="Last Name" class="input" last="last" v-model=last>
+    </div>
+    <div class="form-item">
+          <label class="label"></label>
+            <input type="email" placeholder="Email" class="input" name="email" v-model="email">
+    </div>
       <button type="submit" class="button" @click.prevent>Submit</button>
       </form>
     </div>
@@ -17,7 +21,8 @@
 export default {
 data(){
     return{ 
-        name: '',
+        first: '',
+        last: '',
         email: '',
 
     };
@@ -25,5 +30,7 @@ data(){
 }
 </script>
 <style scoped>
-
+#signup-form{
+  text-align: center;
+}
 </style>

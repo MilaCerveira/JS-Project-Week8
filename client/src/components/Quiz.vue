@@ -71,12 +71,8 @@ export default {
   computed: {},
 };
 </script>
-<style>
+<style scoped>
 ul {
   list-style-type: none;
-}
-
-.button {
-  margin-left: 40px;
 }
 </style>

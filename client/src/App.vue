@@ -26,7 +26,9 @@
       </li>
       </li>
       <li>
-        <!-- <a v-on:click="getList(planets)">Planets</a> -->
+        <a id="scrollTo" v-scroll-to="{element: '#allPlanets'}">
+          All planets
+        </a>
       </li>
       <li>
         <a href='#'>Quiz</a>
@@ -45,7 +47,7 @@
 
 <div class='bodies-container'>
   <item-dropdown :bodies="bodies"> </item-dropdown>
-  <planets-grid :planets="planets"></planets-grid>
+  <planets-grid id="allPlanets" :planets="planets"></planets-grid>
   <item-detail :items="item"></item-detail>
 </div>
       <!-- <h2> NASA's image of the day </h2>
@@ -81,6 +83,8 @@
 
 <script>
 import { eventBus } from "./main.js";
+
+import VueScrollTo from "./main.js"
 import ItemDropdown from "@/components/ItemDropdown.vue";
 import ItemDetail from "@/components/ItemDetail.vue";
 
@@ -113,8 +117,6 @@ export default {
       imgUrl: "",
       favouriteItems: [],
       item: null,
-      selectedPlanet: null,
-      selectedCategory: null
     };
   },
   components: {
@@ -127,11 +129,6 @@ export default {
     "favourite-list": FavouriteList,
     footersm: Footersm,
     NewsList: NewsList,
-
-    "planets": PlanetsGrid,
-    "planets-grid": PlanetsGrid,
-
-    "favourite-list": FavouriteList,
 
     "signup-form": SignUpForm,
 
@@ -197,6 +194,7 @@ export default {
 </script>
 
 <style>
+
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,100&display=swap");
 body {
   font-size: 14px;

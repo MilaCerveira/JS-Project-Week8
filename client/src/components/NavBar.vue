@@ -32,7 +32,7 @@
         <a href='#' id="scrollTo" v-scroll-to="{element: '#allDwarfPlanets'}">Dwarf Planets</a>
       </li>
       <li>
-        <a href='#' id="scrollTo" v-scroll-to="{element: '#allAsteroidss'}">Asteroids</a>
+        <a href='#' id="scrollTo" v-scroll-to="{element: '#allAsteroids'}">Asteroids</a>
       </li>
       <li>
         <a href='#' id="scrollTo" v-scroll-to="{element: '#allComets'}">Comets</a>

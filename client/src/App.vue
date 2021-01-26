@@ -9,6 +9,7 @@
   <sun-item id="sun" :sun="sun"></sun-item>
   <planets-grid id="allPlanets" :planets="planets"></planets-grid>
   <dwarf-planets-grid id="allDwarfPlanets" :dwarfPlanets="dwarfPlanets"></dwarf-planets-grid>
+  <asteroids-grid id="allAsteroids" :asteroids="asteroids"></asteroids-grid>
 </div>
 <scroll-to-top></scroll-to-top>
 
@@ -54,6 +55,7 @@ import ItemDetail from "@/components/ItemDetail.vue";
 import SunItem from "@/components/SunItem.vue";
 import PlanetsGrid from "@/components/PlanetsGrid.vue";
 import DwarfPlanetsGrid from "@/components/DwarfPlanetsGrid";
+import AsteroidsGrid from "@/components/AsteroidsGrid.vue";
 import ScrollToTop from "@/components/ScrollToTop.vue";
 import NavBar from "@/components/NavBar.vue";
 
@@ -76,6 +78,7 @@ export default {
       bodies: [],
       planets: [],
       dwarfPlanets: [],
+      asteroids: [],
       sun: {},
       imgUrls: [],
 
@@ -98,6 +101,7 @@ export default {
     "sun-item": SunItem,
     "planets-grid": PlanetsGrid,
     "dwarf-planets-grid": DwarfPlanetsGrid,
+    "asteroids-grid": AsteroidsGrid,
     "favourite-list": FavouriteList,
     footersm: Footersm,
     NewsList: NewsList,
@@ -113,6 +117,7 @@ export default {
         this.sortedByDistanceFromSun();
         this.sun = this.getSun(bodies.bodies);
         this.dwarfPlanets = this.getDwarfPlanets(bodies.bodies);
+        this.asteroids = this.getAsteroids(bodies.bodies);
       });
 
     fetch(
@@ -151,7 +156,7 @@ export default {
       this.componentKey += 1;
     },
     getPlanets: function (bodies) {
-      const result = bodies.filter((body) => {
+      let result = bodies.filter((body) => {
         return body.isPlanet == true && body.meanRadius > 1188;
       });
       return result;
@@ -161,11 +166,18 @@ export default {
       return result;
     },
     getDwarfPlanets: function (bodies) {
-      const result = bodies.filter((body) => {
+      let result = bodies.filter((body) => {
         return body.isPlanet == true && body.meanRadius < 1188;
       });
       return result;
     },
+    getAsteroids: function (bodies) {
+      let result = bodies.filter((body) => {
+        return (!body.isPlanet && !body.moons && !body.aroundPlanet && body.meanRadius < 600000);
+      });
+      return result
+    },
+
 
     sortedByDistanceFromSun: function () {
       function compare(a, b) {

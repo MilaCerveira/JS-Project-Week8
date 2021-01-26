@@ -27,7 +27,7 @@
         </div>
       </div>
       <form v-on:submit.prevent="saveItem">
-        <input type="submit" method="post" value="Add to Favourites" />
+        <button type="submit" method="post">Add to Favourites</button>
       </form>
 
   </div>
@@ -63,19 +63,16 @@ export default {
 </script>
 
 <style>
-
 #itemDetail {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-content: center;
-
 }
 
 .moons {
-display: flex;
-flex-direction: row;
-flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
-
 </style>

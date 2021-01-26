@@ -51,9 +51,9 @@
 <carousel></carousel>
 
 <div class='bodies-container'>
-  <span class="dropDownBlock">Browse all celestial bodies:<item-dropdown class="dropDown" :bodies="bodies"> </item-dropdown></span>
   <sun-item id="sun" :sun="sun"></sun-item>
   <planets-grid id="allPlanets" :planets="planets"></planets-grid>
+  <span class="dropDownBlock">Browse all celestial bodies:<item-dropdown class="dropDown" :bodies="bodies"> </item-dropdown></span>
   <item-detail :items="item"></item-detail>
 </div>
       <!-- <h2> NASA's image of the day </h2>
@@ -92,7 +92,7 @@
 <script>
 import { eventBus } from "./main.js";
 
-import VueScrollTo from "./main.js"
+import VueScrollTo from "./main.js";
 import ItemDropdown from "@/components/ItemDropdown.vue";
 import ItemDetail from "@/components/ItemDetail.vue";
 import PlanetsGrid from "@/components/PlanetsGrid.vue";
@@ -124,7 +124,7 @@ export default {
       componentKey: 0,
       imgUrl: "",
       favouriteItems: [],
-      item: null
+      item: null,
     };
   },
   components: {
@@ -149,7 +149,6 @@ export default {
         this.planets = this.getPlanets(bodies.bodies);
         this.sortedByDistanceFromSun();
         this.sun = this.getSun(bodies.bodies);
-        
       });
 
     fetch(
@@ -171,11 +170,9 @@ export default {
       }
     });
 
-
     eventBus.$on("selected-item", (item) => {
-      this.selectedItem = item
-    })
-
+      this.selectedItem = item;
+    });
   },
   computed: {
     randomImage() {
@@ -195,10 +192,10 @@ export default {
       });
       return result;
     },
-    getSun: function(bodies) {
-      let result = bodies.find((body => body.englishName == "Sun"))
-      return result
-      },
+    getSun: function (bodies) {
+      let result = bodies.find((body) => body.englishName == "Sun");
+      return result;
+    },
     sortedByDistanceFromSun: function () {
       function compare(a, b) {
         if (a.semimajorAxis < b.semimajorAxis) return -1;
@@ -212,7 +209,6 @@ export default {
 </script>
 
 <style>
-
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,100&display=swap");
 body {
   font-size: 14px;
@@ -229,7 +225,7 @@ a {
   display: flex;
 }
 .dropDown {
-  padding: 4px
+  padding: 4px;
 }
 .Img > div {
   width: 100%;

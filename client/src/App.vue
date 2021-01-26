@@ -22,25 +22,27 @@
       <li>
         <a class='active' href='#'>Home</a>
       <li>
-        <a class='active' href='#' id="scrollTo" v-scroll-to="{element: '#sun'}">Sun</a>
+        <a  href='#' id="scrollTo" v-scroll-to="{element: '#sun'}">Sun</a>
       </li>
       </li>
       <li>
-        <a class='active' href='#' id="scrollTo" v-scroll-to="{element: '#allPlanets'}">
-          Planets
-        </a>
+
+        <a  href='#' id="scrollTo" v-scroll-to="{element: '#allPlanets'}">
+          All planets
+</a>
+        
       </li>
       <li>
-        <a class='active' href='#' id="scrollTo" v-scroll-to="{element: '.quiz-title'}">Quiz</a>
+        <a  href='#' id="scrollTo" v-scroll-to="{element: '.quiz-title'}">Quiz</a>
       </li>
       <li>
-        <a class='active' href='#' id="scrollTo" v-scroll-to="{element: '#news'}">News</a>
+        <a  href='#' id="scrollTo" v-scroll-to="{element: '#news'}">News</a>
       </li>
       <li>
-        <a class='active' href='#' id="scrollTo" v-scroll-to="{element: '.label-container'}">Gallery</a>
+        <a  href='#' id="scrollTo" v-scroll-to="{element: '.label-container'}">Gallery</a>
       </li>
       <li>
-        <a class='active' href='#' id="scrollTo" v-scroll-to="{element: '#signUp'}">Signup</a>
+        <a  href='#' id="scrollTo" v-scroll-to="{element: '#signUp'}">Signup</a>
       </li>
     </ul>
   </nav>
@@ -49,9 +51,9 @@
 <carousel></carousel>
 
 <div class='bodies-container'>
-  <span class="dropDownBlock">Browse all celestial bodies:<item-dropdown class="dropDown" :bodies="bodies"> </item-dropdown></span>
   <sun-item id="sun" :sun="sun"></sun-item>
   <planets-grid id="allPlanets" :planets="planets"></planets-grid>
+  <span class="dropDownBlock">Browse all celestial bodies:<item-dropdown class="dropDown" :bodies="bodies"> </item-dropdown></span>
   <item-detail :items="item"></item-detail>
 </div>
 <scroll-to-top></scroll-to-top>
@@ -92,7 +94,7 @@
 <script>
 import { eventBus } from "./main.js";
 
-import VueScrollTo from "./main.js"
+import VueScrollTo from "./main.js";
 import ItemDropdown from "@/components/ItemDropdown.vue";
 import ItemDetail from "@/components/ItemDetail.vue";
 import PlanetsGrid from "@/components/PlanetsGrid.vue";
@@ -125,7 +127,7 @@ export default {
       componentKey: 0,
       imgUrl: "",
       favouriteItems: [],
-      item: null
+      item: null,
     };
   },
   components: {
@@ -151,7 +153,6 @@ export default {
         this.planets = this.getPlanets(bodies.bodies);
         this.sortedByDistanceFromSun();
         this.sun = this.getSun(bodies.bodies);
-        
       });
 
     fetch(
@@ -173,11 +174,9 @@ export default {
       }
     });
 
-
     eventBus.$on("selected-item", (item) => {
-      this.selectedItem = item
-    })
-
+      this.selectedItem = item;
+    });
   },
   computed: {
     randomImage() {
@@ -197,10 +196,10 @@ export default {
       });
       return result;
     },
-    getSun: function(bodies) {
-      let result = bodies.find((body => body.englishName == "Sun"))
-      return result
-      },
+    getSun: function (bodies) {
+      let result = bodies.find((body) => body.englishName == "Sun");
+      return result;
+    },
     sortedByDistanceFromSun: function () {
       function compare(a, b) {
         if (a.semimajorAxis < b.semimajorAxis) return -1;
@@ -214,7 +213,6 @@ export default {
 </script>
 
 <style>
-
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,100&display=swap");
 body {
   font-size: 14px;
@@ -231,7 +229,7 @@ a {
   display: flex;
 }
 .dropDown {
-  padding: 4px
+  padding: 4px;
 }
 .Img > div {
   width: 100%;
@@ -276,12 +274,12 @@ nav ul li {
   margin-right: 35px;
 }
 nav ul li a {
-  font-weight: 800;
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.2em;
   color: rgba(255, 255, 255, 0.308);
   display: block;
+  font-weight: bold;
 }
 nav ul li a.active {
   box-shadow: 0px -1px 0px #fff;

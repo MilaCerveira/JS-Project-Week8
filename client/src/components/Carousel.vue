@@ -41,7 +41,7 @@ export default {
                 },
                 {
                     text:'Jupiter',
-                    image: 'https://www.astronomytrek.com/wp-content/uploads/2012/11/jupiter.png',
+                    image: 'https://www.astronomytrek.com/wp-content/uploads/2012/11/jupiter.png3',
                 },
                   {
                     text:'Saturn',

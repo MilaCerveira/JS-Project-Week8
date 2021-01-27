@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="dwarfPlanets">
-    <h2>DWARF PLANETS</h2>
+    <h2 v-if="dwarfPlanets.length">DWARF PLANETS ({{dwarfPlanets.length}})</h2>
     <div class="dwarfPlanetsGrid">
         <ul class="dwarfPlanet" v-for="(item, index) in dwarfPlanets" :item="item" :key="index">
           <img class="icon" v-if="item.englishName == '1 Ceres'" src="@/assets/DwarfPlanets/Ceres.png" />

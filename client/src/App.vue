@@ -11,8 +11,7 @@
   <sun-item id="sun" :sun="sun"></sun-item>
   <planets-grid id="allPlanets" :planets="planets"></planets-grid>
   <dwarf-planets-grid id="allDwarfPlanets" :dwarfPlanets="dwarfPlanets"></dwarf-planets-grid>
-  <asteroids-grid id="allAsteroids" :asteroids="asteroids"></asteroids-grid>
-  <comets-grid id="allComets" :comets="comets"></comets-grid>
+  <comets-asteroid-grid id="allComets" :comets="comets" :asteroids="asteroids"></comets-asteroid-grid>
 </div>
 <scroll-to-top></scroll-to-top>
 
@@ -84,8 +83,7 @@ import ItemDetail from "@/components/ItemDetail.vue";
 import SunItem from "@/components/SunItem.vue";
 import PlanetsGrid from "@/components/PlanetsGrid.vue";
 import DwarfPlanetsGrid from "@/components/DwarfPlanetsGrid";
-import AsteroidsGrid from "@/components/AsteroidsGrid.vue";
-import CometsGrid from "@/components/CometsGrid.vue";
+import CometsAsteroidGrid from "@/components/CometsAsteroidGrid.vue";
 import ScrollToTop from "@/components/ScrollToTop.vue";
 import NavBar from "@/components/NavBar.vue";
 
@@ -134,8 +132,7 @@ export default {
     "sun-item": SunItem,
     "planets-grid": PlanetsGrid,
     "dwarf-planets-grid": DwarfPlanetsGrid,
-    "asteroids-grid": AsteroidsGrid,
-    "comets-grid": CometsGrid,
+    "comets-asteroid-grid": CometsAsteroidGrid,
     "favourite-list": FavouriteList,
     footersm: Footersm,
     NewsList: NewsList,
@@ -221,7 +218,6 @@ export default {
       });
       return result
     },
-
 
     sortedByDistanceFromSun: function () {
       function compare(a, b) {

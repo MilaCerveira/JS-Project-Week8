@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="planets">
-    <h2>Planets</h2>
+    <h2 v-if="planets.length">PLANETS ({{planets.length}})</h2>
     <div class="planetsGrid">
       <planets-grid-item v-for="(item, index) in planets" :item="item" :key="index"></planets-grid-item>
       </div>

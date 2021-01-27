@@ -2,9 +2,9 @@
   <div class="comets">
     <section class="cometHeading">
     <h2 v-if="comets.length">COMETS </h2>
-      <img class="categoryImg" src="@/assets/Comet.png"/>
+      <img class="categoryImg" src="https://icons-for-free.com/iconfiles/png/512/windows+10+cinema+icons+Comet-1320567860673275026.png"/>
     <h2 v-if="asteroids.length">and ASTEROIDS ({{asteroids.length}})</h2>
-      <img class="categoryImg" src="@/assets/Asteroid.png"/>
+      <img class="categoryImg" src="https://icons-for-free.com/iconfiles/png/512/lineal+asteroid-1320109753481319526.png"/>
 
     </section>
     <div class="cometsGrid">

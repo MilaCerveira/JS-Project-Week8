@@ -32,7 +32,7 @@
     <img src="https://newsfeed.time.com/wp-content/uploads/sites/9/2010/09/cc000347.jpg?w=720&h=480&crop=1" class="carousel-image" />
   </slide>
   <slide :index="1" class="text-slide">
-    Slide 2 Content
+    <img src=
   </slide>
   <slide :index="2">
     Slide 3 Content

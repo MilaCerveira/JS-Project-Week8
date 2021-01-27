@@ -224,8 +224,8 @@ export default {
           !body.isPlanet &&
           !body.moons &&
           !body.aroundPlanet &&
-          body.meanRadius < 600000 &&
-          body.density < 1.1
+          body.density < 1.1  &&
+          body.meanRadius < 600000
         );
       });
       return result;

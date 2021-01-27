@@ -11,7 +11,7 @@
 
       <span v-if="!item.isPlanet && item.aroundPlanet">
         <p>Type: Satellite</p>
-        <p>Orbits planet: {{ item.aroundPlanet.item }}</p>
+        <p>Orbits planet: {{ item.aroundPlanet.planet }}</p>
       </span>
       <div class="moonGrid" v-if="item.isPlanet && !item.moons">
         <p>Satellites: None</p>

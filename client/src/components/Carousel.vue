@@ -41,7 +41,7 @@ export default {
                 },
                 {
                     text:'Jupiter',
-                    image: 'https://www.astronomytrek.com/wp-content/uploads/2012/11/jupiter.png3',
+                    image: 'https://www.sciencemag.org/sites/default/files/styles/inline__450w__no_aspect/public/jupiter_16x9_0.jpg?itok=v3L7k_ZU',
                 },
                   {
                     text:'Saturn',

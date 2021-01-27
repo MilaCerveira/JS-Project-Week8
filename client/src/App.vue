@@ -3,6 +3,8 @@
 <nav-bar></nav-bar>
 <carousel></carousel>
 
+
+
 <div class='bodies-container'>
   <span class="dropDownBlock">Browse all celestial bodies:<item-dropdown class="dropDown" :bodies="bodies"> </item-dropdown></span>
   <item-detail :items="item"></item-detail>
@@ -17,6 +19,7 @@
       <!-- <h2> NASA's image of the day </h2>
   <img id='randomImg' :src="imgUrl"></img> -->
   
+  
  <div class="favourite-list">
     <h2>Favourite Celestial Bodies</h2>
     <favourite-list :item="item" /> 
@@ -25,9 +28,34 @@
 <div class='quiz-title'> <h2> Quiz Time </h2> </div>
 <quiz :key="componentKey"></quiz>
 <button id="refresh-quiz" v-on:click="refreshQuiz">Refresh Quiz</button>
-
+<carousel-3d>
+  <slide :index="0">
+    <img src="https://newsfeed.time.com/wp-content/uploads/sites/9/2010/09/cc000347.jpg?w=720&h=480&crop=1" class="carousel-image" />
+  </slide>
+  <slide :index="1" class="text-slide">
+    Slide 2 Content
+  </slide>
+  <slide :index="2">
+    Slide 3 Content
+  </slide>
+  <slide :index="3">
+    Slide 4 Content
+  </slide>
+  <slide :index="4">
+    Slide 5 Content
+  </slide>
+  <slide :index="5">
+    Slide 6 Content
+  </slide>
+  <slide :index="6">
+    Slide 7 Content
+  </slide>
+  <slide :index="7">
+    Slide 8 Content
+  </slide>
+</carousel-3d>
 <NewsList id="news"/>
-
+<Chart />
 <div class='label-container'>
   
 <img src="https://freepngimg.com/download/space/23420-7-nasa-file.png" alt="Nasa Icon"style="width:40px;height:40px;">
@@ -36,7 +64,7 @@
 </div>
 </div>
 
-
+<!-- <Chart /> -->
 <img v-if="imgUrls" id='randomImg' :src="imgUrls[0].hdurl"></img>
 <div class= 'signup-form'>
 <h2> Join our mailing list </h2>
@@ -62,6 +90,7 @@ import ScrollToTop from "@/components/ScrollToTop.vue";
 import NavBar from "@/components/NavBar.vue";
 
 import NewsList from "@/components/NewsList";
+import Chart from "@/components/Chart";
 
 // import PlanetList from "@/components/PlanetList.vue";
 import FavouriteService from "@/services/FavouriteService.js";
@@ -72,6 +101,7 @@ import FavouriteList from "@/components/FavouriteList.vue";
 
 import SignUpForm from "@/components/SignUpForm.vue";
 import Footersm from "@/components/Footersm.vue";
+import { Carousel3d, Slide } from 'vue-carousel-3d';
 
 export default {
   name: "App",
@@ -109,8 +139,11 @@ export default {
     "favourite-list": FavouriteList,
     footersm: Footersm,
     NewsList: NewsList,
+    Chart: Chart,
 
     "signup-form": SignUpForm,
+    Carousel3d, 
+    Slide
   },
   mounted() {
     fetch("http://api.le-systeme-solaire.net/rest/bodies/")
@@ -297,6 +330,15 @@ li {
   bottom: 0;
   z-index: -1;
   margin-left: -0.1em;
+}
+
+.carousel-image {
+  width: 100%;
+  height: 100%;
+}
+
+.text-slide {
+  background-color: blue;
 }
 
 </style>

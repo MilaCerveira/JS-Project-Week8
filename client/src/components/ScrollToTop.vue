@@ -1,6 +1,6 @@
 <template>
   <div id="scrolltotop_parent" v-scroll-to=" {element: '#app'}">
-    <div class="fas-fa-rocket" tabindex="0">
+    <img src="/images/rocket.svg" width="30px" height="30px" />
   </div>
 </div>
 
@@ -26,7 +26,7 @@ export default {
   }
 }
 #scrolltotop_parent {
-  background: #006f9e;
+  /* background: #006f9e; */
   cursor: pointer;
   width: 50px;
   height: 50px;
@@ -34,6 +34,12 @@ export default {
   bottom: 50px;
   right: 50px;
   z-index: 1004 !important;
+
+  /* Centering */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* transform: rotate(-45deg); */
 }
 
 #scrolltotop_parent:hover {

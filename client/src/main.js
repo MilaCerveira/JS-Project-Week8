@@ -1,7 +1,10 @@
 import Vue from 'vue'
 import App from './App.vue'
 
-const VueScrollTo = require('vue-scrollto')
+const VueScrollTo = require('vue-scrollto');
+import Carousel3d from 'vue-carousel-3d';
+
+Vue.use(Carousel3d);
 Vue.use(VueScrollTo)
 
 Vue.config.productionTip = false

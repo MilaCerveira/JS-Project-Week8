@@ -2,7 +2,7 @@
   <div>
     <div class="sun">
       <section>
-        <img class="icon" src="@/assets/sun5.png"/>
+        <img class="icon" src="@/assets/Sun.jpg"/>
       </section>
       <section>
         <h2>Sun</h2>

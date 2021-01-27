@@ -13,13 +13,12 @@
         <p>Type: Satellite</p>
         <p>Orbits planet: {{ item.aroundPlanet.item }}</p>
       </span>
-
       <div class="moonGrid" v-if="item.isPlanet && !item.moons">
         <p>Satellites: None</p>
       </div>
 
-      <div class="moonGrid" v-if="item.isPlanet && item.moons">
-        <p>Satellites:</p>
+      <div class="moonGrid" v-if="item.isPlanet && item.moons && item.moons.length">
+        <p>Satellites: ({{item.moons.length}})</p>
         <div class="moons">
           <ul v-if="item.moons" v-for="mooon in item.moons"> 
             <li>{{ mooon.moon }}</li>

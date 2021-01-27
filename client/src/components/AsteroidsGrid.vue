@@ -1,7 +1,7 @@
 <template>
   <div class="asteroids">
     <section class="asteroidHeading">
-      <h2>ASTEROIDS</h2>
+    <h2 v-if="asteroids.length">ASTEROIDS ({{asteroids.length}})</h2>
       <img class="categoryImg" src="@/assets/Asteroid.png"/>
     </section>
     <div class="asteroidsGrid">

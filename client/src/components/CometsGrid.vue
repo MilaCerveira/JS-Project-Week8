@@ -1,7 +1,7 @@
 <template>
   <div class="comets">
     <section class="cometHeading">
-      <h2>cometS</h2>
+    <h2 v-if="comets.length">COMETS ({{comets.length}})</h2>
       <img class="categoryImg" src="@/assets/Comet.png"/>
     </section>
     <div class="cometsGrid">

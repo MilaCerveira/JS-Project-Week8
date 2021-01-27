@@ -1,8 +1,11 @@
 <template>
   <div class="comets">
     <section class="cometHeading">
-    <h2 v-if="comets.length">COMETS ({{comets.length}})</h2>
+    <h2 v-if="comets.length">COMETS </h2>
       <img class="categoryImg" src="@/assets/Comet.png"/>
+    <h2 v-if="asteroids.length">and ASTEROIDS ({{asteroids.length}})</h2>
+      <img class="categoryImg" src="@/assets/Asteroid.png"/>
+
     </section>
     <div class="cometsGrid">
       <ul class="comet" v-for="(item, index) in comets" :item="item" :key="index">
@@ -14,8 +17,8 @@
 
 <script>
 export default {
-  name: "comets-grid",
-  props: ["comets"]
+  name: "comets-asteroid-grid",
+  props: ["comets", "asteroids"]
 }
 </script>
 

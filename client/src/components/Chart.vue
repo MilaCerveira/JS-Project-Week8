@@ -9,7 +9,7 @@
 export default {
 
     mounted() {
-        window.fetch('http://api.le-systeme-solaire.net/rest/bodies/').then((response) => {
+        fetch('http://api.le-systeme-solaire.net/rest/bodies/').then((response) => {
             response.json().then((json) => {
                 console.log(json);
                 let bodies = json.bodies;
@@ -46,7 +46,7 @@ export default {
                                 2]);
 
                 var options = {
-                    title: "Radius of the planets in Solar System",
+                    title: "",
                     width: 900,
                     height: 400,
                     bar: {groupWidth: "95%"},

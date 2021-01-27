@@ -31,7 +31,6 @@ export default {
   },
   methods: {
     handleSearch() {
-      console.log("Button is clicked, Search term: ", this.searchTerm);
       window
         .fetch(
           `https://content.guardianapis.com/search?q=${this.searchTerm}&format=json&api-key=test&show-fields=body`
@@ -39,7 +38,7 @@ export default {
         .then((response) => {
           response.json().then((json) => {
             this.news = json.response.results;
-            console.log(json.response.results)
+            
           });
         });
     },
@@ -52,7 +51,7 @@ export default {
       .then((response) => {
         response.json().then((json) => {
           this.news = json.response.results;
-          console.log(this.news);
+          
         });
       });
   },

@@ -4,7 +4,6 @@
 <carousel></carousel>
 
 
-
 <div class='bodies-container'>
   <span class="dropDownBlock">Browse all celestial bodies:<item-dropdown class="dropDown" :bodies="bodies"> </item-dropdown></span>
   <item-detail :items="item"></item-detail>
@@ -24,35 +23,36 @@
     <favourite-list :item="item" /> 
   </div>
   
+<carousel-3d>
+  <slide :index="0">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Tracy_Caldwell_Dyson_in_Cupola_ISS.jpg/1024px-Tracy_Caldwell_Dyson_in_Cupola_ISS.jpg" class="carousel-image" />
+  </slide>
+  <slide :index="1" class="text-slide">
+    <img src="https://s1.best-wallpaper.net/wallpaper/m/1307/Beautiful-cosmic-space-planets-stars_m.webp" class="carousel-image" />
+  </slide>
+  <slide :index="2">
+    <img src="https://content.fortune.com/wp-content/uploads/2020/03/NASA-Hiring-Astronauts-2020.jpg" class="carousel-image" />
+  </slide>
+  <slide :index="3">
+    <img src="https://d.newsweek.com/en/full/1522782/anne-mcclain-space-crime-astronaut.jpg" class="carousel-image" />
+  </slide>
+  <slide :index="4">
+    <img src="https://thumbs.dreamstime.com/b/spacecraft-elements-image-furnished-nasa-earth-96063212.jpg" class="carousel-image" />
+  </slide>
+  <slide :index="5">
+    <img src="https://thumbs.dreamstime.com/b/astronaut-outer-space-porthole-background-earth-elements-image-furnished-nasa-astronaut-outer-131582688.jpg" class="carousel-image" />
+  </slide>
+  <slide :index="6">
+    <img src="https://www.narrativepathsjournal.com/wp-content/uploads/2019/10/NASA-made-all-its-scientific-research-available-for-free-2.jpg" class="carousel-image" />
+  </slide>
+  <slide :index="7">
+    <img src="https://pbs.twimg.com/media/D4w9CEBXsAE9-Tv.jpg" class="carousel-image" />
+  </slide>
+</carousel-3d>
 <div class='quiz-title'> <h2> Quiz Time </h2> </div>
 <quiz :key="componentKey"></quiz>
 <button id="refresh-quiz" v-on:click="refreshQuiz">Refresh Quiz</button>
-<carousel-3d>
-  <slide :index="0">
-    <img src="https://newsfeed.time.com/wp-content/uploads/sites/9/2010/09/cc000347.jpg?w=720&h=480&crop=1" class="carousel-image" />
-  </slide>
-  <slide :index="1" class="text-slide">
-    <img src=
-  </slide>
-  <slide :index="2">
-    Slide 3 Content
-  </slide>
-  <slide :index="3">
-    Slide 4 Content
-  </slide>
-  <slide :index="4">
-    Slide 5 Content
-  </slide>
-  <slide :index="5">
-    Slide 6 Content
-  </slide>
-  <slide :index="6">
-    Slide 7 Content
-  </slide>
-  <slide :index="7">
-    Slide 8 Content
-  </slide>
-</carousel-3d>
+
 <NewsList id="news"/>
 <Chart />
 <div class='label-container'>
@@ -333,8 +333,6 @@ li {
   height: 100%;
 }
 
-.text-slide {
-  background-color: blue;
-}
+
 
 </style>

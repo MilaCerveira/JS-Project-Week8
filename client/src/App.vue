@@ -30,7 +30,7 @@
 <button id="refresh-quiz" v-on:click="refreshQuiz">Refresh Quiz</button>
 <carousel-3d>
   <slide :index="0">
-    <img src="https://eandt.theiet.org/media/10073/astronaut-in-space.jpg?crop=0,0.015333333333333336,0,0.00016666666666669664&cropmode=percentage&width=640&height=480&rnd=132193250740000000" class="carousel-image" />
+    <img src="https://newsfeed.time.com/wp-content/uploads/sites/9/2010/09/cc000347.jpg?w=720&h=480&crop=1" class="carousel-image" />
   </slide>
   <slide :index="1" class="text-slide">
     Slide 2 Content

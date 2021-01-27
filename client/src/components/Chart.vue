@@ -1,6 +1,6 @@
 <template>
     <div>
-        Chart
+        
         <div id="column-chart"></div>
     </div>
 </template>
@@ -28,7 +28,7 @@ export default {
             
                 let planetChartData = planets.map((planet) => {
                     let {englishName, meanRadius} = planet;
-                    return [englishName, meanRadius, 'gold'];
+                    return [englishName, meanRadius, 'blue'];
                 })
 
                 let dataPoints = [

@@ -54,6 +54,9 @@
 <button id="refresh-quiz" v-on:click="refreshQuiz">Refresh Quiz</button>
 
 <NewsList id="news"/>
+<div class='charlab-container'>
+<h2> Radius of Planets</h2>
+</div>
 <Chart />
 <div class='label-container'>
   
@@ -293,6 +296,22 @@ button#refresh-quiz {
   margin-bottom: 20px;
   text-transform: uppercase;
   position: relative;
+}
+.charlab-container{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  position: relative;
+}
+.charlab-container::before {
+  content: " ";
+  position: absolute;
+  width: 5.8em;
+  background: #00bfff;
+  height: 0.4em;
+  bottom: 0;
+  z-index: -1;
+  margin-left: -0.1em;
 }
 
 .images-title::before {

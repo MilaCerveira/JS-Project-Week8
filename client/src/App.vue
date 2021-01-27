@@ -3,26 +3,7 @@
 <nav-bar></nav-bar>
 <carousel></carousel>
 
-<carousel-3d>
-  <slide :index="0">
-    <img src="https://media2.giphy.com/media/dX2TL6s33potSeysVA/giphy.gif" class="carousel-image" />
-  </slide>
-  <slide :index="1" class="text-slide">
-    Slide 2 Content
-  </slide>
-  <slide :index="2">
-    Slide 3 Content
-  </slide>
-  <slide :index="3">
-    Slide 4 Content
-  </slide>
-  <slide :index="4">
-    Slide 5 Content
-  </slide>
-  <slide :index="5">
-    Slide 6 Content
-  </slide>
-</carousel-3d>
+
 
 <div class='bodies-container'>
   <span class="dropDownBlock">Browse all celestial bodies:<item-dropdown class="dropDown" :bodies="bodies"> </item-dropdown></span>
@@ -47,7 +28,32 @@
 <div class='quiz-title'> <h2> Quiz Time </h2> </div>
 <quiz :key="componentKey"></quiz>
 <button id="refresh-quiz" v-on:click="refreshQuiz">Refresh Quiz</button>
-
+<carousel-3d>
+  <slide :index="0">
+    <img src="https://eandt.theiet.org/media/10073/astronaut-in-space.jpg?crop=0,0.015333333333333336,0,0.00016666666666669664&cropmode=percentage&width=640&height=480&rnd=132193250740000000" class="carousel-image" />
+  </slide>
+  <slide :index="1" class="text-slide">
+    Slide 2 Content
+  </slide>
+  <slide :index="2">
+    Slide 3 Content
+  </slide>
+  <slide :index="3">
+    Slide 4 Content
+  </slide>
+  <slide :index="4">
+    Slide 5 Content
+  </slide>
+  <slide :index="5">
+    Slide 6 Content
+  </slide>
+  <slide :index="6">
+    Slide 7 Content
+  </slide>
+  <slide :index="7">
+    Slide 8 Content
+  </slide>
+</carousel-3d>
 <NewsList id="news"/>
 <Chart />
 <div class='label-container'>

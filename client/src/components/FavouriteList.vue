@@ -41,9 +41,35 @@ export default {
 </script>
 
 <style>
-.favourite-container {
+
+.favourite-list {
   display: flex;
-  flex-wrap: nowrap;
+  flex-direction: column;
+  align-items: center;
+}
+.favourite-container {
+  /* display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
+  flex-direction: column; */
+}
+.favLi {
+  max-width: 70px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+}
+.favouriteHeading {
+  text-align: center;
+}
+
+.favButton {
+  max-width: 40px !important;
+}
+
+.fav-list-item {
+  /* display: flex;
+  flex-flow: column wrap; */
 }
 </style>

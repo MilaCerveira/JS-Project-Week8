@@ -2,7 +2,7 @@
   <div>
     <div class="sun">
       <section>
-        <img class="icon" src="https://lh3.googleusercontent.com/proxy/KIj0wvvSVb7jcEfBVj2sFfQtHoBc1vBSWTkepJ5-b01nn-t1bctaGLTS9vLKmtAZu5JbuaC7iR-Ctyq9Xf-VlSbEnZngahk"/>
+        <img class="icon" src="@/assets/Sun.jpg"/>
       </section>
       <section>
         <h2>Sun</h2>
@@ -28,7 +28,7 @@ export default {
 .icon {
 width: 200px;
 height: 200px;
-padding: 3px;
+padding: 5px;
 }
 
 .sun {

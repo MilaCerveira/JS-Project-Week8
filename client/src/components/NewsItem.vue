@@ -1,7 +1,8 @@
 <template>
   <div>
-    <li v-for="newsItem in news" :key="newsItem.id" @click='expandContent(newsItem)'>
+    <li class="active" v-for="newsItem in news" :key="newsItem.id" @click='expandContent(newsItem)'>
       {{ newsItem.webTitle }}
+    <p></p>
     </li>
 
     <div v-if="selectedNewsItem">
@@ -32,5 +33,9 @@ li {
     list-style: none;
     font-size: 14px;
     font-family: "Montserrat", sans-serif;
+}
+
+li.active {
+  font-weight: 900;
 }
 </style>

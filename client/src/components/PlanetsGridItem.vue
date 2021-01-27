@@ -1,5 +1,5 @@
 <template lang="html">
-  <ul class="planet" v-on:click="displayInfo">
+  <ul class="planet" v-on:click="displayInfo" v-scroll-to="{element: '#itemDetail'}">
     <img class="icon" v-if="item.englishName == 'Mercury'" src="@/assets/Planets/Mercury.png" />
     <img class="icon" v-if="item.englishName == 'Venus'" src="@/assets/Planets/Venus.png" />
     <img class="icon" v-if="item.englishName == 'Earth'" src="@/assets/Planets/Earth.png" />

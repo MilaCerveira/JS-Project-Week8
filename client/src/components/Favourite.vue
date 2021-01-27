@@ -1,9 +1,9 @@
 <template>
-  <div class="fav-list-tem">
-    <li>
+  <div class="fav-list-item">
+    <li class="favLi">
       <p v-if="item.englishName">{{ item.englishName }}</p>
       <p v-if="!item.englishName">{{ item.alternativeName }}</p>
-      <button v-on:click="deleteFavourite">Remove</button>
+      <button class="favButton" v-on:click="deleteFavourite">X</button>
     </li>
   </div>
 </template>

@@ -6,9 +6,9 @@
 
 
 <div class='bodies-container'>
-  <span class="dropDownBlock">Browse all celestial bodies:<item-dropdown class="dropDown" :bodies="bodies"> </item-dropdown></span>
-  <item-detail :items="item"></item-detail>
   <sun-item id="sun" :sun="sun"></sun-item>
+  <span class="dropDownBlock">Browse all celestial bodies:<item-dropdown class="dropDown" :bodies="bodies"> </item-dropdown></span>
+  <item-detail id="itemDetail" :items="item"></item-detail>
   <planets-grid id="allPlanets" :planets="planets"></planets-grid>
   <dwarf-planets-grid id="allDwarfPlanets" :dwarfPlanets="dwarfPlanets"></dwarf-planets-grid>
   <comets-asteroid-grid id="allComets" :comets="comets" :asteroids="asteroids"></comets-asteroid-grid>
@@ -18,11 +18,13 @@
       <!-- <h2> NASA's image of the day </h2>
   <img id='randomImg' :src="imgUrl"></img> -->
   
-  
+<div class="sidenav">
  <div class="favourite-list">
-    <h2>Favourite Celestial Bodies</h2>
+    <h2 class="favouriteHeading">Favourite Celestial Bodies</h2>
     <favourite-list :item="item" /> 
+    </div>
   </div>
+  
   
 <carousel-3d>
   <slide :index="0">
@@ -363,6 +365,27 @@ li {
   height: 100%;
 }
 
+.sidenav {
+  height: auto; /* Full-height: remove this if you want "auto" height */
+  width: 160px; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: rgb(192, 187, 187); /* Black */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  /* padding-top: 20px; */
+  margin: 5px;
+}
+
+#app {
+  margin-left: 160px; /* Same as the width of the sidebar */
+  padding: 0px 10px;
+}
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
 
 
 </style>

@@ -1,5 +1,6 @@
 <template lang="html">
   <div id="app">
+
 <nav-bar></nav-bar>
 <carousel></carousel>
 
@@ -106,6 +107,8 @@ import SignUpForm from "@/components/SignUpForm.vue";
 import Footersm from "@/components/Footersm.vue";
 import { Carousel3d, Slide } from 'vue-carousel-3d';
 
+import config from "@/config.js";
+
 export default {
   name: "App",
   data() {
@@ -148,6 +151,9 @@ export default {
     Slide
   },
   mounted() {
+
+    const api_key = config.api_key_1;
+
     fetch("http://api.le-systeme-solaire.net/rest/bodies/")
       .then((res) => res.json())
       .then((bodies) => {
@@ -161,13 +167,13 @@ export default {
       });
 
     fetch(
-      "https://api.nasa.gov/planetary/apod?api_key=FKGwNutpdJ2Irx3SQCknZlIKIwwVYRlY9WvheVfu&count=20"
+      `https://api.nasa.gov/planetary/apod?api_key=${api_key}&count=20`
     )
       .then((res) => res.json())
       .then((data) => (this.imgUrls = data));
 
     fetch(
-      "https://api.nasa.gov/planetary/apod?api_key=FKGwNutpdJ2Irx3SQCknZlIKIwwVYRlY9WvheVfu&count=20"
+      `https://api.nasa.gov/planetary/apod?api_key=${api_key}&count=20`
     )
       .then((res) => res.json())
 
@@ -192,6 +198,7 @@ export default {
     },
   },
   methods: {
+
     refreshQuiz() {
       this.componentKey += 1;
     },

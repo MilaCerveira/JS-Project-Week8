@@ -65,5 +65,10 @@ export default {
 <style scoped>
 #signup-form {
   text-align: center;
+ 
+}
+.input {
+  border-style: none;
+  border-bottom-style: groove;
 }
 </style>

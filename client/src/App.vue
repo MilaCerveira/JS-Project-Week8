@@ -71,8 +71,7 @@
 </div>
 </div>
 
-<!-- <Chart /> -->
-<img v-if="imgUrls" id='randomImg' :src="imgUrls[0].hdurl"></img>
+<img id='randomImg' :src="imgUrls[0].hdurl"></img>
 <div class= 'signup-form'>
 <h2> Join our mailing list </h2>
 </div>
@@ -98,7 +97,6 @@ import NavBar from "@/components/NavBar.vue";
 import NewsList from "@/components/NewsList";
 import Chart from "@/components/Chart";
 
-// import PlanetList from "@/components/PlanetList.vue";
 import FavouriteService from "@/services/FavouriteService.js";
 import Carousel from "@/components/Carousel.vue";
 import Quiz from "@/components/Quiz.vue";
@@ -107,7 +105,7 @@ import FavouriteList from "@/components/FavouriteList.vue";
 
 import SignUpForm from "@/components/SignUpForm.vue";
 import Footersm from "@/components/Footersm.vue";
-import { Carousel3d, Slide } from 'vue-carousel-3d';
+import { Carousel3d, Slide } from "vue-carousel-3d";
 
 import config from "@/config.js";
 
@@ -149,11 +147,10 @@ export default {
     Chart: Chart,
 
     "signup-form": SignUpForm,
-    Carousel3d, 
-    Slide
+    Carousel3d,
+    Slide,
   },
   mounted() {
-
     const api_key = config.api_key_1;
 
     fetch("http://api.le-systeme-solaire.net/rest/bodies/")
@@ -168,18 +165,9 @@ export default {
         this.comets = this.getComets(bodies.bodies);
       });
 
-    fetch(
-      `https://api.nasa.gov/planetary/apod?api_key=${api_key}&count=20`
-    )
+    fetch(`https://api.nasa.gov/planetary/apod?api_key=${api_key}&count=20`)
       .then((res) => res.json())
       .then((data) => (this.imgUrls = data));
-
-    fetch(
-      `https://api.nasa.gov/planetary/apod?api_key=${api_key}&count=20`
-    )
-      .then((res) => res.json())
-
-      .then((data) => (this.imgUrl = data));
 
     eventBus.$on("item-to-save", (item) => {
       if (!this.favouriteItems.includes(item)) {
@@ -200,7 +188,6 @@ export default {
     },
   },
   methods: {
-
     refreshQuiz() {
       this.componentKey += 1;
     },
@@ -222,15 +209,26 @@ export default {
     },
     getAsteroids: function (bodies) {
       let result = bodies.filter((body) => {
-        return (!body.isPlanet && !body.moons && !body.aroundPlanet && body.meanRadius < 600000);
+        return (
+          !body.isPlanet &&
+          !body.moons &&
+          !body.aroundPlanet &&
+          body.meanRadius < 600000
+        );
       });
-      return result
+      return result;
     },
     getComets: function (bodies) {
       let result = bodies.filter((body) => {
-        return (!body.isPlanet && !body.moons && !body.aroundPlanet && body.meanRadius < 600000 && body.density < 1.1);
+        return (
+          !body.isPlanet &&
+          !body.moons &&
+          !body.aroundPlanet &&
+          body.meanRadius < 600000 &&
+          body.density < 1.1
+        );
       });
-      return result
+      return result;
     },
 
     sortedByDistanceFromSun: function () {
@@ -246,7 +244,6 @@ export default {
 </script>
 
 <style>
-
 #randomImg {
   height: 800px;
   width: 100%;
@@ -308,7 +305,7 @@ button#refresh-quiz {
   text-transform: uppercase;
   position: relative;
 }
-.charlab-container{
+.charlab-container {
   margin-top: 20px;
   margin-bottom: 20px;
   margin-left: 20px;
@@ -366,26 +363,27 @@ li {
 }
 
 .sidenav {
-  height: auto; /* Full-height: remove this if you want "auto" height */
-  width: 160px; /* Set the width of the sidebar */
-  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-  z-index: 1; /* Stay on top */
-  top: 0; /* Stay at the top */
+  height: auto;
+  width: 160px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
   left: 0;
-  background-color: rgb(192, 187, 187); /* Black */
-  overflow-x: hidden; /* Disable horizontal scroll */
-  /* padding-top: 20px; */
+  background-color: rgb(192, 187, 187);
+  overflow-x: hidden;
   margin: 5px;
 }
 
 #app {
-  margin-left: 160px; /* Same as the width of the sidebar */
+  margin-left: 160px;
   padding: 0px 10px;
 }
 @media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
+  .sidenav {
+    padding-top: 15px;
+  }
+  .sidenav a {
+    font-size: 18px;
+  }
 }
-
-
 </style>

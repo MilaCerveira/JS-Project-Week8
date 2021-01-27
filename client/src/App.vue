@@ -300,8 +300,10 @@ button#refresh-quiz {
 .charlab-container{
   margin-top: 20px;
   margin-bottom: 20px;
+  margin-left: 20px;
   text-transform: uppercase;
   position: relative;
+  padding-top: 20px;
 }
 .charlab-container::before {
   content: " ";

@@ -28,7 +28,7 @@ export default {
             
                 let planetChartData = planets.map((planet) => {
                     let {englishName, meanRadius} = planet;
-                    return [englishName, meanRadius, 'blue'];
+                    return [englishName, meanRadius, '#2D82B7'];
                 })
 
                 let dataPoints = [

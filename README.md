@@ -1,6 +1,6 @@
-# Games Hub
+# Solar system
 
-Games Hub is a full stack JavaScript application with an Express server and MongoDB database.
+Solar system is a full stack JavaScript application with an Express server and MongoDB database.
 
 ## Getting Started
 
